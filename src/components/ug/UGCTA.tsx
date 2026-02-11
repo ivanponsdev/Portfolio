@@ -32,6 +32,7 @@ const UGCTA: React.FC = () => {
             O haz clic en "Entrar como Usuario Demo" en la app.
           </div>
 
+
           <div className="ug-cta__links">
             {LINKS.map((link) => (
               <a
@@ -47,6 +48,10 @@ const UGCTA: React.FC = () => {
                 {link.label}
               </a>
             ))}
+          </div>
+
+          <div style={{ color: '#888', fontSize: '0.95rem', marginTop: '0.8rem', marginBottom: '0.5rem' }}>
+            <strong>Nota:</strong> Por razones de recursos, en la demo en vivo se ha deshabilitado el envío de emails y el chatbot. Puedes ver estas funcionalidades en las imágenes del carrusel.
           </div>
 
           {/* Back to portfolio */}
