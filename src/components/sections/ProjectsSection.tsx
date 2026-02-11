@@ -14,8 +14,8 @@ const PROJECTS: (Project & { route?: string })[] = [
       'Sistema SPA de gestión de gimnasios con React + Node.js que integra autenticación segura, gestión de usuarios/clases/ejercicios, dashboards analíticos con visualización de datos, características de accesibilidad y chat de soporte.',
     image: '/images/UG.jpg',
     tags: ['React', 'Node.js', 'JavaScript', 'CSS', 'n8n'],
-    link: '#',
-    repo: '#',
+    link: 'https://gym-app-git-main-ivans-projects-cb621e21.vercel.app',
+    repo: 'https://github.com/ivanponsdev/gym-app',
     route: '/projects/ultimate-gym',
   },
 

@@ -14,7 +14,7 @@ const LINKS = [
   },
   {
     label: 'Ver Demo en Vivo',
-    href: '#',
+    href: 'https://gym-app-git-main-ivans-projects-cb621e21.vercel.app',
     icon: <RocketIcon size={18} />,
     primary: true,
   },
