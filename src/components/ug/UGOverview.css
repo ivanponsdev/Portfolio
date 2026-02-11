@@ -1,0 +1,82 @@
+/* Ultimate GYM - Overview Section */
+
+.ug-overview {
+  padding: 6rem 0;
+  background: var(--color-bg);
+  position: relative;
+}
+
+.ug-overview__title {
+  text-align: center;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 3rem;
+}
+
+.ug-overview__accent {
+  color: var(--color-accent-pink);
+}
+
+/* 3-column grid */
+.ug-overview__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+
+.ug-overview__card {
+  background: var(--color-bg-card);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+/* Colores únicos por tarjeta */
+.ug-overview__card--0 {
+  border-color: #ec4899;
+}
+.ug-overview__card--1 {
+  border-color: #f59e42;
+}
+.ug-overview__card--2 {
+  border-color: #3b82f6;
+}
+
+.ug-overview__card:hover {
+  border-color: rgba(236, 72, 153, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.ug-overview__icon {
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.ug-overview__card-title {
+  font-size: var(--font-size-xl);
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+}
+
+.ug-overview__card-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  text-align: justify;
+}
+
+/* Ultimate GYM - Overview Section */
+@media (max-width: 768px) {
+  .ug-overview__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+

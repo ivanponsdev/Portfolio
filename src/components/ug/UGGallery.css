@@ -1,0 +1,171 @@
+/* Ultimate GYM - Gallery Section */
+
+.ug-gallery {
+  padding: 4rem 0;
+  background: var(--color-bg);
+}
+
+.ug-gallery__wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Main image container */
+.ug-gallery__main {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 60px rgba(236, 72, 153, 0.08);
+  background: var(--color-bg-lighter);
+}
+
+.ug-gallery__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  min-height: 400px;
+  max-height: 600px;
+  object-fit: contain;
+  background: var(--color-bg-lighter);
+}
+
+.ug-gallery__caption {
+  padding: 1rem;
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  background: var(--color-bg-card);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Controls container */
+.ug-gallery__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+/* Navigation buttons */
+.ug-gallery__btn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 1.5rem;
+  font-weight: 300;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ug-gallery__btn:hover {
+  background: var(--color-bg-lighter);
+  border-color: var(--color-accent-pink);
+  color: var(--color-accent-pink);
+}
+
+/* Dots navigation */
+.ug-gallery__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.ug-gallery__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-border);
+  border: 1px solid var(--color-border-hover);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  padding: 0;
+}
+
+.ug-gallery__dot:hover {
+  background: var(--color-text-dim);
+}
+
+.ug-gallery__dot--active {
+  background: var(--color-accent-pink);
+  border-color: var(--color-accent-pink);
+  width: 12px;
+  height: 12px;
+}
+
+/* Counter */
+.ug-gallery__counter {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* Ultimate GYM - Gallery Section */
+@media (max-width: 768px) {
+  .ug-gallery {
+    padding: 2rem 0;
+  }
+
+  .ug-gallery__main {
+    border-radius: var(--radius-md);
+  }
+
+  .ug-gallery__image {
+    min-height: 350px;
+    max-height: 70vh;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .ug-gallery__controls {
+    margin-top: 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .ug-gallery__btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+
+  .ug-gallery__dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .ug-gallery__dot--active {
+    width: 10px;
+    height: 10px;
+  }
+
+  .ug-gallery__caption {
+    font-size: 0.9rem;
+    padding: 0.7rem 0.5rem;
+  }
+
+  .ug-gallery__counter {
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.7rem;
+  }
+}
+
+

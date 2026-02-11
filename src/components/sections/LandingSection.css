@@ -1,0 +1,111 @@
+/* Landing Section */
+
+.landing {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: var(--spacing-xl);
+  overflow: hidden;
+  width: 100%;
+}
+
+.landing__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xl);
+  max-width: 700px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Landing Section */
+.landing__title {
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+/* Landing Section */
+.landing__subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+/* Landing Section */
+.landing__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 0.85em 2.5em;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-accent-pink);
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  box-shadow: var(--shadow-glow-purple);
+}
+
+.landing__cta:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+}
+
+.landing__cta:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.landing__cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  line-height: 1;
+  margin-left: 0.3em;
+  animation: bounceArrow 2s infinite;
+}
+
+/* Animación de rebote suave */
+@keyframes bounceArrow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+/* Landing Section */
+
+/* Landing Section */
+@media (max-width: 768px) {
+  .landing__title {
+    font-size: var(--font-size-5xl);
+  }
+}
+
+/* Landing Section */
+@media (max-width: 480px) {
+  .landing__title {
+    font-size: var(--font-size-4xl);
+  }
+
+  .landing__subtitle {
+    font-size: var(--font-size-base);
+  }
+
+  .landing__cta {
+    padding: 0.75em 2em;
+    font-size: var(--font-size-sm);
+  }
+}
+
+

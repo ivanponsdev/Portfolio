@@ -1,0 +1,122 @@
+/* Ultimate GYM - CTA Section */
+
+.ug-cta {
+  padding: 6rem 0 4rem;
+  background: var(--color-bg);
+}
+
+.ug-cta__card {
+  position: relative;
+  text-align: center;
+  padding: 4rem 2rem;
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+/* Decorative glow */
+.ug-cta__glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 0%, rgba(236, 72, 153, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 100%, rgba(59, 130, 246, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.ug-cta__title {
+  position: relative;
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  margin-bottom: 1rem;
+  z-index: 1;
+}
+
+.ug-cta__text {
+  position: relative;
+  color: var(--color-text-muted);
+  max-width: 520px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+  z-index: 1;
+}
+
+/* CTA links */
+.ug-cta__links {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  z-index: 1;
+}
+
+.ug-cta__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-base);
+}
+
+.ug-cta__link--primary {
+  background: var(--color-accent-pink);
+  color: #fff;
+}
+
+.ug-cta__link--primary:hover {
+  background: #db2777;
+  box-shadow: 0 0 24px rgba(236, 72, 153, 0.35);
+}
+
+.ug-cta__link--secondary {
+  background: transparent;
+  border: 1px solid var(--color-border-hover);
+  color: var(--color-text-muted);
+}
+
+.ug-cta__link--secondary:hover {
+  border-color: var(--color-text);
+  color: var(--color-text);
+}
+
+.ug-cta__link--secondary svg {
+  opacity: 0.7;
+}
+
+/* Back text */
+.ug-cta__back-text {
+  position: relative;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-dim);
+  z-index: 1;
+}
+
+.ug-cta__back-link {
+  color: var(--color-accent-pink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ug-cta__back-link:hover {
+  color: #f472b6;
+}
+
+/* Ultimate GYM - CTA Section */
+@media (max-width: 600px) {
+  .ug-cta__card {
+    padding: 3rem 1.5rem;
+  }
+
+  .ug-cta__links {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+

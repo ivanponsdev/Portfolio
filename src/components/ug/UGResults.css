@@ -1,0 +1,121 @@
+/* Ultimate GYM - Results Section */
+
+.ug-results {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, var(--color-bg) 0%, #0e1528 100%);
+}
+
+.ug-results__title {
+  text-align: center;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 3rem;
+}
+
+.ug-results__accent {
+  color: var(--color-accent-pink);
+}
+
+/* Metrics grid */
+.ug-results__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.ug-results__metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.75rem 1rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+}
+
+.ug-results__metric:hover {
+  border-color: rgba(236, 72, 153, 0.25);
+  transform: translateY(-3px);
+}
+
+.ug-results__metric-icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ug-results__metric-value {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: var(--color-accent-pink);
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+}
+
+.ug-results__metric-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* Learnings */
+.ug-results__learnings {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.ug-results__learnings-title {
+  font-size: var(--font-size-xl);
+  margin-bottom: 1.25rem;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ug-results__learnings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ug-results__learnings-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.ug-results__learnings-check {
+  color: var(--color-accent-green);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 0.1em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ultimate GYM - Results Section */
+@media (max-width: 768px) {
+  .ug-results__metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .ug-results__metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+

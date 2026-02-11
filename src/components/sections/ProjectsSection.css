@@ -1,0 +1,195 @@
+/* Projects Section */
+
+.projects {
+  z-index: 1;
+  padding-top: calc(var(--navbar-height) + var(--spacing-3xl));
+}
+
+/* Projects Section */
+.projects__section-title {
+  text-align: center;
+  font-size: var(--font-size-4xl);
+  font-weight: 800;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.projects__title-accent {
+  color: var(--color-accent-pink);
+}
+
+/* Projects Section */
+.projects__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3xl);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Projects Section */
+.projects__card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  background: var(--color-bg-card);
+  transition: border-color var(--transition-base),
+              box-shadow var(--transition-base);
+}
+
+.projects__card:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-card);
+}
+
+/* Projects Section */
+.projects__card-image-wrapper {
+  position: relative;
+  min-height: 260px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.1));
+}
+
+.projects__card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Projects Section */
+.projects__card-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: var(--spacing-sm);
+}
+
+.projects__card-placeholder-icon {
+  font-size: 3.5rem;
+}
+
+.projects__card-placeholder-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* Projects Section */
+.projects__card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11, 17, 33, 0.75);
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: var(--font-size-lg);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.projects__card-image-wrapper:hover .projects__card-overlay {
+  opacity: 1;
+}
+
+/* Projects Section */
+.projects__card-info {
+  padding: var(--spacing-2xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.projects__card-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-accent-pink);
+}
+
+.projects__card-desc {
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+  text-align: justify;
+}
+
+/* Projects Section */
+.projects__card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.projects__tag {
+  padding: 0.3em 0.8em;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-accent-pink);
+  border: 1px solid rgba(236, 72, 153, 0.3);
+  border-radius: var(--radius-full);
+  background: rgba(236, 72, 153, 0.08);
+}
+
+/* Projects Section */
+.projects__coming-soon {
+  text-align: center;
+  font-style: italic;
+  color: var(--color-text-dim);
+  margin-top: var(--spacing-3xl);
+  font-size: var(--font-size-base);
+}
+
+/* Projects Section */
+.projects__card--clickable {
+  cursor: pointer;
+}
+
+.projects__card--clickable:hover {
+  border-color: rgba(236, 72, 153, 0.3);
+  box-shadow: 0 8px 32px rgba(236, 72, 153, 0.1);
+}
+
+.projects__card-cta {
+  display: inline-block;
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-accent-pink);
+  transition: all var(--transition-fast);
+}
+
+.projects__card--clickable:hover .projects__card-cta {
+  letter-spacing: 0.02em;
+}
+
+/* Projects Section */
+@media (max-width: 768px) {
+  .projects__card {
+    grid-template-columns: 1fr;
+  }
+
+  .projects__card-image-wrapper {
+    min-height: 200px;
+  }
+
+  .projects__card-info {
+    padding: var(--spacing-xl);
+  }
+
+  .projects__section-title {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .projects__card-info {
+    padding: var(--spacing-lg);
+  }
+}
+
+

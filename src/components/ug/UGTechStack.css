@@ -1,0 +1,169 @@
+/* Ultimate GYM - Tech Stack Section */
+
+.ug-tech {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, #0e1528 0%, var(--color-bg) 100%);
+}
+
+.ug-tech__title {
+  text-align: center;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 3rem;
+}
+
+.ug-tech__accent {
+  color: var(--color-accent-pink);
+}
+
+/* 4-column grid */
+.ug-tech__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+/* Layer card */
+.ug-tech__layer {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.25rem;
+  transition: all var(--transition-base);
+}
+
+.ug-tech__layer:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+}
+
+.ug-tech__layer-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.ug-tech__layer-icon {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ug-tech__layer-title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+}
+
+.ug-tech__layer-line {
+  height: 2px;
+  border-radius: 1px;
+  opacity: 0.4;
+  margin-bottom: 1rem;
+}
+
+/* Tech items */
+.ug-tech__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.ug-tech__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.ug-tech__item-name {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.ug-tech__item-desc {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-dim);
+}
+
+/* Architecture diagram */
+.ug-tech__arch {
+  display: flex;
+  justify-content: center;
+}
+
+.ug-tech__arch-diagram {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  max-width: 800px;
+  width: 100%;
+}
+
+.ug-tech__arch-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.02);
+  min-width: 110px;
+  text-align: center;
+}
+
+.ug-tech__arch-node span {
+  font-size: 1.5rem;
+}
+
+.ug-tech__arch-node strong {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+.ug-tech__arch-node small {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-dim);
+}
+
+.ug-tech__arch-node--client { border-color: rgba(236, 72, 153, 0.3); }
+.ug-tech__arch-node--server { border-color: rgba(59, 130, 246, 0.3); }
+.ug-tech__arch-node--db     { border-color: rgba(52, 211, 153, 0.3); }
+.ug-tech__arch-node--n8n    { border-color: rgba(167, 139, 250, 0.3); }
+
+.ug-tech__arch-arrow {
+  font-size: 1.25rem;
+  color: var(--color-text-dim);
+  flex-shrink: 0;
+}
+
+/* Ultimate GYM - Tech Stack Section */
+@media (max-width: 1024px) {
+  .ug-tech__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .ug-tech__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ug-tech__arch-diagram {
+    flex-direction: column;
+  }
+
+  .ug-tech__arch-arrow {
+    transform: rotate(90deg);
+  }
+}
+
+
