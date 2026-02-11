@@ -15,18 +15,13 @@ const BIO_PARAGRAPHS: string[] = [
 
 const SOCIAL_LINKS: SocialLink[] = [
   {
-    name: 'GitHub',
-    url: 'https://github.com/tu-usuario',        // ← ✏️ tu GitHub
-    icon: 'github',
-  },
-  {
     name: 'LinkedIn',
-    url: 'https://linkedin.com/in/tu-perfil',    // ← ✏️ tu LinkedIn
+    url: 'https://www.linkedin.com/in/iv%C3%A1n-pons-mart%C3%ADnez-617609183/',
     icon: 'linkedin',
   },
   {
     name: 'Email',
-    url: 'mailto:tu@email.com',                  // ← ✏️ tu email
+    url: 'mailto:ivanponsdeonil@hotmail.es',
     icon: 'email',
   },
 ];
