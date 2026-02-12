@@ -29,9 +29,9 @@ const WORKFLOWS: Workflow[] = [
     title: 'Envío de Guías de Entrenamiento, Alimentación y Hábitos',
     trigger: 'Click en botón "Enviar guía" (admin panel)',
     steps: [
-      'Admin hace clic en botón de envío',
-      'Genera PDF con el contenido personalizado',
-      'Envía email con PDF adjunto al usuario',
+      'User hace clic en botón de enviar guías',
+      'El sistema envía automáticamente el PDF correspondiente al objetivo del usuario',
+      'El admin solo sube cada PDF una vez desde su dashboard; los usuarios reciben el PDF adecuado sin intervención manual',
     ],
     before: '5 minutos por guía (manual)',
     after: '0 intervención manual',

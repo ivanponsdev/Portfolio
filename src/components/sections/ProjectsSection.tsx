@@ -59,10 +59,22 @@ const ProjectsSection: React.FC = () => {
                     alt={project.title}
                     className="projects__card-image"
                     loading="lazy"
+                    style={{ cursor: project.route ? 'pointer' : undefined }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (project.route) navigate(project.route);
+                    }}
                   />
                 ) : (
                   /* Placeholder si no hay imagen */
-                  <div className="projects__card-placeholder">
+                  <div
+                    className="projects__card-placeholder"
+                    style={{ cursor: project.route ? 'pointer' : undefined }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (project.route) navigate(project.route);
+                    }}
+                  >
                     <span className="projects__card-placeholder-icon">
                       <RocketIcon size={48} />
                     </span>
@@ -80,6 +92,7 @@ const ProjectsSection: React.FC = () => {
                     rel="noopener noreferrer"
                     className="projects__card-overlay"
                     aria-label={`Ver demo de ${project.title}`}
+                    onClick={e => e.stopPropagation()}
                   >
                     Ver demo →
                   </a>
