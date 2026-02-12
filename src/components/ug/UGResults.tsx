@@ -2,7 +2,7 @@ import { FileTextIcon, PlugIcon, DatabaseIcon, CheckCircleIcon, BotIcon, Accessi
 import './UGResults.css';
 
 const METRICS = [
-  { value: '2016', label: 'Líneas en AdminDashboard.jsx', icon: <FileTextIcon size={28} /> },
+  { value: '12+', label: 'Gráficos analíticos en dashboards', icon: <FileTextIcon size={28} /> },
   { value: '8', label: 'Endpoints API implementados', icon: <PlugIcon size={28} /> },
   { value: '4', label: 'Modelos de BD normalizados', icon: <DatabaseIcon size={28} /> },
   { value: '100%', label: 'Flujos de usuario completados', icon: <CheckCircleIcon size={28} /> },
