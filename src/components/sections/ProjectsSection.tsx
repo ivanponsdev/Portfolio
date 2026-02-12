@@ -83,20 +83,6 @@ const ProjectsSection: React.FC = () => {
                     </span>
                   </div>
                 )}
-
-                {/* Overlay hover */}
-                {project.link && project.link !== '#' && (
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="projects__card-overlay"
-                    aria-label={`Ver demo de ${project.title}`}
-                    onClick={e => e.stopPropagation()}
-                  >
-                    Ver demo →
-                  </a>
-                )}
               </div>
 
               {/* Info del proyecto */}
