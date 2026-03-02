@@ -24,6 +24,11 @@ const SOCIAL_LINKS: SocialLink[] = [
     url: 'mailto:ivanponsdeonil@hotmail.es',
     icon: 'email',
   },
+  {
+    name: 'GitHub',
+    url: 'https://github.com/ivanponsdev',
+    icon: 'github',
+  },
 ];
 
 
