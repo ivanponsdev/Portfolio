@@ -21,23 +21,25 @@ const UGNavigation: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + 200;
+
+      let activeItem = NAV_ITEMS[0].id;
 
       for (const item of NAV_ITEMS) {
         const section = document.getElementById(item.id);
         if (section) {
           const sectionTop = section.offsetTop;
-          const sectionBottom = sectionTop + section.offsetHeight;
-
-          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            setActiveId(item.id);
-            break;
+          if (scrollPosition >= sectionTop) {
+            activeItem = item.id;
           }
         }
       }
+
+      setActiveId(activeItem);
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Llamar una vez al montar
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
