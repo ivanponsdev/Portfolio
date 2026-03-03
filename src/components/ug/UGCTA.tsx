@@ -32,9 +32,15 @@ const UGCTA: React.FC = () => {
           </p>
 
           <div style={{ color: '#888', fontSize: '0.95rem', marginBottom: '1.2rem' }}>
-            <strong>Cuenta demo disponible:</strong><br />
+            <strong>Cuentas de prueba disponibles:</strong><br />
+            <strong style={{ color: '#aaa' }}>Usuario Demo:</strong><br />
             Email: demo@portfolio.com<br />
             Password: Demo123!<br />
+            <br />
+            <strong style={{ color: '#aaa' }}>Admin:</strong><br />
+            Email: admin@portfolio.com<br />
+            Password: Admin123!<br />
+            <br />
             O haz clic en "Entrar como Usuario Demo" en la app.
           </div>
 
