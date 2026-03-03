@@ -9,6 +9,7 @@ import UGTechStack from '../components/ug/UGTechStack';
 import UGN8N from '../components/ug/UGN8N';
 import UGResults from '../components/ug/UGResults';
 import UGCTA from '../components/ug/UGCTA';
+import UGNavigation from '../components/ug/UGNavigation';
 import './UltimateGymPage.css';
 
 const UltimateGymPage: React.FC = () => {
@@ -29,6 +30,8 @@ const UltimateGymPage: React.FC = () => {
       >
         ← Volver al Portfolio
       </button>
+
+      <UGNavigation />
 
       <main>
         <UGHero />
