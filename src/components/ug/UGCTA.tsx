@@ -8,6 +8,12 @@ const LINKS = [
     icon: <RocketIcon size={18} />,
     primary: true,
   },
+  {
+    label: 'Acceder al Repositorio',
+    href: 'https://github.com/ivanponsdev/UltimateGym-Project',
+    icon: <RocketIcon size={18} />,
+    primary: false,
+  },
 ];
 
 const UGCTA: React.FC = () => {

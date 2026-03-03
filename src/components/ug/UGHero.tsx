@@ -37,7 +37,7 @@ const UGHero: React.FC = () => {
               href="#ug-cta"
               className="ug-hero__cta ug-hero__cta--secondary"
             >
-              Ver repositorio
+              Para acceder a la demo
             </a>
           </div>
         </div>
