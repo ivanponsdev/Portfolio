@@ -4,7 +4,7 @@ import './UGCTA.css';
 const LINKS = [
   {
     label: 'Ver Demo en Vivo',
-    href: 'https://gym-app-git-main-ivans-projects-cb621e21.vercel.app',
+    href: 'https://ultimate-gym-project.vercel.app',
     icon: <RocketIcon size={18} />,
     primary: true,
   },
