@@ -199,13 +199,13 @@
 }
 
 /* Base de Datos - Rosa/Magenta neón */
-.about__expertise-card--base .about__expertise-skill-tag {
+.about__expertise-card--base-de-datos .about__expertise-skill-tag {
   background: rgba(255, 51, 153, 0.1);
   border: 1px solid rgba(255, 51, 153, 0.4);
   color: #ff3399;
 }
 
-.about__expertise-card--base .about__expertise-skill-tag:hover {
+.about__expertise-card--base-de-datos .about__expertise-skill-tag:hover {
   background: rgba(255, 51, 153, 0.2);
   border-color: rgba(255, 51, 153, 0.6);
   box-shadow: 0 0 10px rgba(255, 51, 153, 0.3);
