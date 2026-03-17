@@ -147,7 +147,7 @@ const AboutSection: React.FC = () => {
           
           <div className="about__expertise-grid">
             {EXPERTISE_AREAS.map((area) => (
-              <div key={area.title} className="about__expertise-card">
+              <div key={area.title} className={`about__expertise-card about__expertise-card--${area.title.toLowerCase().replace(' ', '-')}`}>
                 <div className="about__expertise-icon">{area.icon}</div>
                 <h4 className="about__expertise-card-title">{area.title}</h4>
                 <p className="about__expertise-description">{area.description}</p>

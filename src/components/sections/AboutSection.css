@@ -164,19 +164,51 @@
 
 .about__expertise-skill-tag {
   padding: var(--spacing-xs) var(--spacing-sm);
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.3);
   border-radius: var(--radius-sm);
   font-size: var(--font-size-xs);
-  color: #a78bfa;
   font-weight: 500;
   transition: background var(--transition-fast),
-              border-color var(--transition-fast);
+              border-color var(--transition-fast),
+              box-shadow var(--transition-fast);
 }
 
-.about__expertise-skill-tag:hover {
-  background: rgba(139, 92, 246, 0.2);
-  border-color: rgba(139, 92, 246, 0.5);
+/* Frontend - Cyan neón */
+.about__expertise-card--frontend .about__expertise-skill-tag {
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.4);
+  color: #00f0ff;
+}
+
+.about__expertise-card--frontend .about__expertise-skill-tag:hover {
+  background: rgba(0, 240, 255, 0.2);
+  border-color: rgba(0, 240, 255, 0.6);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
+/* Backend - Verde neón */
+.about__expertise-card--backend .about__expertise-skill-tag {
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.4);
+  color: #00ff88;
+}
+
+.about__expertise-card--backend .about__expertise-skill-tag:hover {
+  background: rgba(0, 255, 136, 0.2);
+  border-color: rgba(0, 255, 136, 0.6);
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+/* Base de Datos - Rosa/Magenta neón */
+.about__expertise-card--base .about__expertise-skill-tag {
+  background: rgba(255, 51, 153, 0.1);
+  border: 1px solid rgba(255, 51, 153, 0.4);
+  color: #ff3399;
+}
+
+.about__expertise-card--base .about__expertise-skill-tag:hover {
+  background: rgba(255, 51, 153, 0.2);
+  border-color: rgba(255, 51, 153, 0.6);
+  box-shadow: 0 0 10px rgba(255, 51, 153, 0.3);
 }
 
 /* About Section */
