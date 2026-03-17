@@ -7,9 +7,28 @@ import './AboutSection.css';
 const PROFILE_IMAGE = '/images/_FRF3085.jpg';
 
 
-const BIO_PARAGRAPHS: string[] = [
-  'Soy un desarrollador web full stack con experiencia en la creación de aplicaciones web modernas y escalables. Me apasiona aprender nuevas tecnologías y aplicar mis conocimientos para resolver problemas reales a través del código.',
-  'Además tengo un gran interés por el diseño de interfaces y la experiencia de usuario, buscando siempre que mis proyectos no solo sean funcionales sino también atractivos y fáciles de usar.',
+const BIO_INTRO: string = 
+  'Soy un desarrollador web full stack especializado en la creación de aplicaciones web completas, modernas y escalables. Domino todo el ciclo de desarrollo, desde el diseño de interfaces hasta la gestión de bases de datos, pasando por la lógica de servidor y APIs.';
+
+const EXPERTISE_AREAS = [
+  {
+    title: 'Frontend',
+    icon: '🎨',
+    description: 'Desarrollo de interfaces modernas y responsivas con React, TypeScript y CSS avanzado. Experiencia en diseño UX/UI, animaciones fluidas y optimización de rendimiento para una experiencia de usuario excepcional.',
+    skills: ['React', 'TypeScript', 'HTML5/CSS3', 'Responsive Design', 'UX/UI']
+  },
+  {
+    title: 'Backend',
+    icon: '⚙️',
+    description: 'Creación de APIs robustas y escalables con Node.js, Python y arquitecturas RESTful. Implementación de lógica de negocio compleja, autenticación, autorización y integración con servicios externos como n8n.',
+    skills: ['Node.js', 'Python', 'REST APIs', 'Automatización', 'Integrations']
+  },
+  {
+    title: 'Base de Datos',
+    icon: '🗄️',
+    description: 'Diseño e implementación de bases de datos eficientes tanto SQL como NoSQL. Experiencia en modelado de datos, optimización de consultas y gestión de grandes volúmenes de información.',
+    skills: ['MongoDB', 'MySQL', 'PostgreSQL', 'Diseño de Schemas', 'Queries Optimization']
+  }
 ];
 
 
@@ -97,11 +116,9 @@ const AboutSection: React.FC = () => {
 
           {/* Bio + Social */}
           <div className="about__info">
-            {BIO_PARAGRAPHS.map((paragraph, i) => (
-              <p key={i} className="about__bio">
-                {paragraph}
-              </p>
-            ))}
+            <p className="about__bio">
+              {BIO_INTRO}
+            </p>
 
             {/* Redes sociales */}
             <div className="about__socials">
@@ -119,6 +136,30 @@ const AboutSection: React.FC = () => {
                 </a>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* ---- Áreas de Expertise ---- */}
+        <div className="about__expertise">
+          <h3 className="about__expertise-title">
+            Lo que <span className="gradient-text">hago</span>
+          </h3>
+          
+          <div className="about__expertise-grid">
+            {EXPERTISE_AREAS.map((area) => (
+              <div key={area.title} className="about__expertise-card">
+                <div className="about__expertise-icon">{area.icon}</div>
+                <h4 className="about__expertise-card-title">{area.title}</h4>
+                <p className="about__expertise-description">{area.description}</p>
+                <div className="about__expertise-skills">
+                  {area.skills.map((skill) => (
+                    <span key={skill} className="about__expertise-skill-tag">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
