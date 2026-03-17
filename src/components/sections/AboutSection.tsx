@@ -20,8 +20,8 @@ const EXPERTISE_AREAS = [
   {
     title: 'Backend',
     icon: '⚙️',
-    description: 'Creación de APIs robustas y escalables con Node.js y arquitecturas RESTful. Implementación de autenticación JWT con gestión de roles, lógica de negocio compleja e integración con servicios externos. También manejo JavaScript y Python.',
-    skills: ['Node.js', 'REST APIs', 'JWT Auth', 'JavaScript', 'Python']
+    description: 'Creación de APIs robustas y escalables con Node.js y arquitecturas RESTful. Implementación de autenticación JWT con gestión de roles, estructuras MVC y lógica de negocio compleja. También manejo Java y Python para diferentes casos de uso.',
+    skills: ['Node.js', 'REST APIs', 'JWT Auth', 'MVC', 'Java', 'Python']
   },
   {
     title: 'Base de Datos',
