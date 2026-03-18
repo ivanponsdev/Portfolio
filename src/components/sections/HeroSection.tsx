@@ -1,26 +1,24 @@
-/* Hero Section - Personal introduction with name and bio */
-
+import React from 'react';
+import InteractiveMap from '../InteractiveMap';
 import './HeroSection.css';
-
-
-const GREETING = 'Hola, soy ';
-const NAME = 'Iván Pons';
-const BIO =
-  'Full stack developer con visión global, pero con una clara preferencia por el frontend y la creación de interfaces web atractivas. ' +
-  'Disfruto transformar ideas en experiencias visuales intuitivas y modernas.';
 
 const HeroSection: React.FC = () => {
   return (
-    <section id="home" className="hero section">
-      <div className="hero__content container">
-        {/* ---- Título ---- */}
-        <h1 className="hero__title">
-          {GREETING}{' '}
-          <span className="hero__name">{NAME}</span>
-        </h1>
+    <section id="home" className="hero">
+      <div className="hero__map-container">
+        <InteractiveMap />
+        <div className="hero__overlay"></div>
+      </div>
 
-        {/* ---- Bio ---- */}
-        <p className="hero__bio">{BIO}</p>
+      <div className="hero__content container">
+        <h1 className="hero__title">
+          Hola, soy <span className="hero__name">Iván Pons</span>
+        </h1>
+        <p className="hero__bio">
+          Desarrollador Full Stack especializado en materializar productos digitales de principio a fin. 
+          Desde la conceptualización y diseño de interfaces intuitivas hasta la arquitectura robusta del backend y la gestión inteligente de datos. 
+          Construyo soluciones escalables cuidando cada fase del desarrollo.
+        </p>
       </div>
     </section>
   );
