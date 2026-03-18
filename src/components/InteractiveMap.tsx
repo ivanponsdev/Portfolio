@@ -5,7 +5,6 @@ const geoUrl = "https://raw.githubusercontent.com/lotusms/world-map-data/main/wo
 
 const InteractiveMap: React.FC = () => {
   const MY_LOCATION_ISO = "ESP"; 
-  const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
 
@@ -34,8 +33,8 @@ const InteractiveMap: React.FC = () => {
       >
         <Graticule stroke="rgba(255,255,255,0.015)" strokeWidth={0.5} />
         <Geographies geography={geoUrl}>
-          {({ geographies }) =>
-            geographies.map((geo) => {
+          {({ geographies }: { geographies: any[] }) =>
+            geographies.map((geo: any) => {
               const isMyLocation = geo.id === MY_LOCATION_ISO || geo.properties?.ISO_A3 === MY_LOCATION_ISO;
               const isSelected = selectedCountry === geo.id;
 
@@ -46,8 +45,6 @@ const InteractiveMap: React.FC = () => {
                   className="rsm-geography"
                   data-my-location={isMyLocation}
                   data-is-selected={isSelected}
-                  onMouseEnter={() => !isMobile && setHoveredCountry(geo.rsmKey)}
-                  onMouseLeave={() => !isMobile && setHoveredCountry(null)}
                   onClick={() => handleCountryClick(geo.id)}
                   style={{
                     default: {
