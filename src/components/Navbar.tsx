@@ -9,6 +9,8 @@ import './Navbar.css';
 const NAV_LINKS: NavLink[] = [
   { label: 'Home', href: 'home' },
   { label: 'Sobre mí', href: 'about' },
+  { label: 'Lo que hago', href: 'whatido' },
+  { label: 'Stack', href: 'techstack' },
   { label: 'Proyectos', href: 'projects' },
 ];
 

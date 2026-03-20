@@ -1,0 +1,246 @@
+/* --- Base de la Sección --- */
+.about.section {
+    padding: 100px 0;
+    background-color: #030406;
+    color: #fff;
+    overflow: hidden;
+}
+
+.section-full {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.about__section-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 5rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.gold-text {
+    color: #d4a037;
+    text-shadow: 0 0 20px rgba(212, 160, 55, 0.3);
+}
+
+/* --- Mapa de Expedición --- */
+.expedition-map {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.milestone {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin: 1.5rem 0;
+    position: relative;
+    z-index: 5;
+}
+
+.milestone.reverse {
+    flex-direction: row-reverse;
+}
+
+/* --- Brújula / Marcador --- */
+.milestone__marker {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #030406;
+    border-radius: 50%;
+}
+
+.marker-compass {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(212, 160, 55, 0.7);
+    background: radial-gradient(circle, rgba(212, 160, 55, 0.1) 0%, transparent 75%);
+    box-shadow: 0 0 20px rgba(212, 160, 55, 0.2);
+    animation: rotateCompass 40s linear infinite;
+    z-index: 1;
+}
+
+.marker-glass {
+    position: absolute;
+    inset: 6px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 50%);
+    z-index: 2;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.marker-glass::after {
+    content: '';
+    position: absolute;
+    top: -150%; left: -150%;
+    width: 300%; height: 300%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.08), transparent);
+    transform: rotate(45deg);
+    animation: glassShine 8s infinite;
+}
+
+.milestone__icon-vector {
+    color: #d4a037;
+    z-index: 3;
+    filter: drop-shadow(0 0 10px rgba(212, 160, 55, 0.5));
+    transition: all 0.4s ease;
+}
+
+.milestone:hover .milestone__icon-vector {
+    transform: scale(1.1) rotate(5deg);
+    color: #f0c961;
+}
+
+.milestone__coord {
+    position: absolute;
+    top: 5px; right: 5px;
+    background: #d4a037;
+    color: #000;
+    font-weight: 900;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+/* --- Tarjetas --- */
+.milestone__card {
+    flex: 1;
+    background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(0,0,0,0.02));
+    padding: 2.2rem;
+    border-radius: 18px;
+    border: 1px solid rgba(212,160,55,0.06);
+    backdrop-filter: blur(8px);
+    transition: all 0.4s ease;
+}
+
+.milestone:hover .milestone__card {
+    border-color: rgba(212, 160, 55, 0.3);
+    background: rgba(212, 160, 55, 0.03);
+    transform: translateY(-5px);
+}
+
+.milestone__title {
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+    font-family: 'Playfair Display', serif;
+    text-shadow: 0 2px 0 rgba(0,0,0,0.35);
+}
+
+.milestone__desc {
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 1rem;
+    line-height: 1.75;
+    text-shadow: none;
+}
+
+.milestone__tags {
+    margin-top: 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.milestone__tag {
+    padding: 6px 12px;
+    background: rgba(32,28,23,0.35); /* dark pill to contrast */
+    border: 1px solid rgba(212, 160, 55, 0.18);
+    border-radius: 6px;
+    font-size: 0.82rem;
+    color: #d4a037; /* gold text for emphasis */
+    font-weight: 700;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.4) inset;
+}
+
+.milestone__tag:hover {
+    background: #d4a037; /* solid gold on hover for clear contrast */
+    color: #0b0b0b;
+    border-color: rgba(212,160,55,0.95);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+/* --- Líneas de Conexión --- */
+.map-connection {
+    height: 160px;
+    margin: -40px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.path-animation {
+    stroke-dashoffset: 1000;
+    stroke-dasharray: 10;
+    animation: drawPath 45s linear infinite;
+}
+
+/* --- Destino Final (X Roja) --- */
+.map-final-x {
+    text-align: center;
+    margin-top: 5rem;
+    padding-bottom: 4rem;
+}
+
+.x-wrapper {
+    display: inline-flex;
+    width: 85px;
+    height: 85px;
+    border: 2px dashed #b34d4d; /* Rojo marítimo */
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    animation: pulseFinal 2s infinite;
+}
+
+.x-letter {
+    font-size: 3rem;
+    color: #b34d4d;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+}
+
+.x-label {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* --- Animaciones --- */
+@keyframes rotateCompass {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes glassShine {
+    0% { transform: translate(-50%, -50%) rotate(45deg); }
+    25%, 100% { transform: translate(150%, 150%) rotate(45deg); }
+}
+
+@keyframes drawPath {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes pulseFinal {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.08); opacity: 1; }
+}
+
+/* --- Responsive --- */
+@media (max-width: 850px) {
+    .milestone, .milestone.reverse { flex-direction: column; text-align: center; gap: 1.5rem; }
+    .map-connection { display: none; }
+    .about__section-title { font-size: 2.5rem; }
+}

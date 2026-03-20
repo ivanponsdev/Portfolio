@@ -1,27 +1,34 @@
-/* Particle Canvas */
-
 import { useRef, useEffect, useCallback } from 'react';
 import './ParticleCanvas.css';
 
-/* ---- Configuración de partículas ---- */
+/* ---- Configuración de Constelaciones Estelares Náuticas ---- */
 
-/** Cantidad de partículas en desktop */
-const PARTICLE_COUNT_DESKTOP = 60;
+/** Cantidad de estrellas en desktop */
+const PARTICLE_COUNT_DESKTOP = 100;
 
-/** Cantidad de partículas en móvil (menos para rendimiento) */
-const PARTICLE_COUNT_MOBILE = 30;
+/** Cantidad de estrellas en móvil */
+const PARTICLE_COUNT_MOBILE = 40;
 
-/** Radio de influencia del cursor en píxeles */
+/** Distancia máxima para conectar dos estrellas (px) */
+const CONNECTION_DISTANCE = 150;
+
+/** Radio de influencia del cursor (px) */
 const CURSOR_RADIUS = 250;
 
-/** Fuerza de atracción hacia el cursor (0-1) */
+/** Fuerza de atracción (0-1) */
 const CURSOR_FORCE = 0.08;
 
-/** Colores de las partículas — Solo 2 colores principales */
+/** * NUEVA PALETA: Colores de las estrellas y red náutica 
+ * Tonos blancos, azules fríos y un toque de mar
+ */
 const PARTICLE_COLORS: string[] = [
-  'rgba(59, 130, 246, 0.7)',   // azul
-  'rgba(139, 92, 246, 0.6)',   // púrpura
+  'rgba(255, 255, 255, 0.9)', // Blanco puro estelar
+  'rgba(173, 216, 230, 0.7)', // Azul hielo muy claro
+  'rgba(100, 149, 237, 0.5)', // Azul mar suave
 ];
+
+/** Lista de tecnologías para etiquetas flotantes (mantenida) */
+const TECH_LABELS = ['React', 'Node.js', 'TypeScript', 'SQL', 'API', 'Git', 'UI/UX', 'Cloud'];
 
 interface Particle {
   x: number;
@@ -31,20 +38,26 @@ interface Particle {
   radius: number;
   color: string;
   baseSpeed: number;
+  label: string | null;
 }
 
+/** Crea una partícula con posibilidad de tener etiqueta (mantenida) */
 function createParticle(width: number, height: number): Particle {
-  const baseSpeed = 0.15 + Math.random() * 0.35;
+  const baseSpeed = 0.1 + Math.random() * 0.3;
   const angle = Math.random() * Math.PI * 2;
+  
+  const hasLabel = Math.random() > 0.85;
+  const label = hasLabel ? TECH_LABELS[Math.floor(Math.random() * TECH_LABELS.length)] : null;
 
   return {
     x: Math.random() * width,
     y: Math.random() * height,
     vx: Math.cos(angle) * baseSpeed,
     vy: Math.sin(angle) * baseSpeed,
-    radius: 1.5 + Math.random() * 2.5,
+    radius: 1.0 + Math.random() * 2.0, // Estrellas más pequeñas y nítidas
     color: PARTICLE_COLORS[Math.floor(Math.random() * PARTICLE_COLORS.length)],
     baseSpeed,
+    label,
   };
 }
 
@@ -63,7 +76,7 @@ const ParticleCanvas: React.FC = () => {
     );
   }, []);
 
-  /* ---------- Bucle de animación ---------- */
+  /* ---------- Bucle de animación y dibujo ---------- */
   const animate = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -76,25 +89,25 @@ const ParticleCanvas: React.FC = () => {
 
     ctx.clearRect(0, 0, width, height);
 
-    for (const p of particlesRef.current) {
-      /* -- Atracción hacia el cursor -- */
+    // Primera pasada: Actualizar posiciones y dibujar la RED
+    for (let i = 0; i < particlesRef.current.length; i++) {
+      const p = particlesRef.current[i];
+
+      /* -- Lógica de movimiento -- */
       const dx = mouse.x - p.x;
       const dy = mouse.y - p.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
+      const distMouse = Math.sqrt(dx * dx + dy * dy);
 
-      if (dist < CURSOR_RADIUS && dist > 0) {
-        /* Fuerza más fuerte cuanto más cerca del cursor */
-        const influence = 1 - dist / CURSOR_RADIUS;
-        const force = influence * influence * CURSOR_FORCE; // Cuadrática para más potencia
-        p.vx += (dx / dist) * force;
-        p.vy += (dy / dist) * force;
+      if (distMouse < CURSOR_RADIUS && distMouse > 0) {
+        const influence = 1 - distMouse / CURSOR_RADIUS;
+        const force = influence * influence * CURSOR_FORCE;
+        p.vx += (dx / distMouse) * force;
+        p.vy += (dy / distMouse) * force;
       }
 
-      /* -- Fricción progresiva para mantener control -- */
       p.vx *= 0.97;
       p.vy *= 0.97;
 
-      /* -- Velocidad mínima (siempre flotan) -- */
       const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
       if (speed < p.baseSpeed * 0.5) {
         const angle = Math.atan2(p.vy, p.vx);
@@ -102,27 +115,68 @@ const ParticleCanvas: React.FC = () => {
         p.vy = Math.sin(angle) * p.baseSpeed * 0.5;
       }
 
-      /* -- Mover -- */
       p.x += p.vx;
       p.y += p.vy;
 
-      /* -- Rebote en bordes (wrap) -- */
+      // Wrap-around
       if (p.x < -10) p.x = width + 10;
       if (p.x > width + 10) p.x = -10;
       if (p.y < -10) p.y = height + 10;
       if (p.y > height + 10) p.y = -10;
 
-      /* -- Dibujar partícula -- */
+      /* -- Dibujar las conexiones de la RED Náutica -- */
+      for (let j = i + 1; j < particlesRef.current.length; j++) {
+        const p2 = particlesRef.current[j];
+        const dx2 = p.x - p2.x;
+        const dy2 = p.y - p2.y;
+        const distConnect = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+
+       if (distConnect < CONNECTION_DISTANCE) {
+          ctx.beginPath();
+          
+          // 1. Aumenta el multiplicador final (estaba en 0.1, súbelo a 0.3 o 0.4)
+          const opacity = (1 - distConnect / CONNECTION_DISTANCE) * 0.35; 
+          
+          // 2. Puedes usar un blanco con un toque azulado para que brillen más
+          ctx.strokeStyle = `rgba(180, 210, 255, ${opacity})`; 
+          
+          // 3. Aumenta el grosor (estaba en 0.5, prueba con 0.8 o 1.0)
+          ctx.lineWidth = 0.8; 
+          
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+          ctx.closePath();
+        }
+      }
+    }
+
+    // Segunda pasada: Dibujar las ESTRELLAS y ETIQUETAS
+    for (const p of particlesRef.current) {
+      /* -- Dibujar Estrella -- */
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       ctx.fillStyle = p.color;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = p.color;
       ctx.fill();
+      ctx.shadowBlur = 0; 
+
+      /* -- Dibujar Etiqueta de Tecnología -- */
+      if (p.label) {
+        ctx.font = '10px "Fira Code", monospace';
+        // Usamos un blanco tenue para las etiquetas
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)'; 
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(p.label, p.x + 8, p.y + 2);
+      }
     }
 
     animationRef.current = requestAnimationFrame(animate);
   }, []);
 
-  /* ---------- Setup y limpieza ---------- */
+  /* ---------- Setup y limpieza (mantenida) ---------- */
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -144,7 +198,6 @@ const ParticleCanvas: React.FC = () => {
       mouseRef.current = { x: -1000, y: -1000 };
     };
 
-    /* Soporte táctil */
     const handleTouchMove = (e: TouchEvent): void => {
       if (e.touches.length > 0) {
         mouseRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
@@ -178,4 +231,3 @@ const ParticleCanvas: React.FC = () => {
 };
 
 export default ParticleCanvas;
-

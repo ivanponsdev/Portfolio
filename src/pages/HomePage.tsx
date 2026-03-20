@@ -1,7 +1,9 @@
 import Navbar from '../components/Navbar';
 import LandingSection from '../components/sections/LandingSection';
 import HeroSection from '../components/sections/HeroSection';
-import AboutSection from '../components/sections/AboutSection';
+import AboutMe from '../components/sections/AboutMe';
+import WhatIDo from '../components/sections/WhatIDo';
+import TechStack from '../components/sections/TechStack';
 import ProjectsSection from '../components/sections/ProjectsSection';
 
 const HomePage: React.FC = () => {
@@ -11,7 +13,9 @@ const HomePage: React.FC = () => {
       <main>
         <LandingSection />
         <HeroSection />
-        <AboutSection />
+        <AboutMe />
+        <WhatIDo />
+        <TechStack />
         <ProjectsSection />
       </main>
     </>

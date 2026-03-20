@@ -11,6 +11,16 @@
   padding: var(--spacing-xl);
   overflow: hidden;
   width: 100%;
+  
+  /* --- NUEVO: Fondo Cartográfico Sutil (reforzado) --- */
+  background-color: #030406; /* Un azul marino aún más profundo y oscuro */
+  
+  /* Una rejilla tenue que simula coordenadas náuticas */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+  background-size: 100px 100px;
+  background-position: center;
 }
 
 .landing__content {
@@ -30,13 +40,17 @@
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: #ffffff;
+  /* Un ligero resplandor dorado sutil en el título */
+  text-shadow: 0 0 25px rgba(255, 250, 220, 0.25);
 }
 
 /* Landing Section */
 .landing__subtitle {
   font-size: var(--font-size-lg);
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.7); /* Menos muted, más blanco lunar */
   font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 /* Landing Section */
@@ -47,16 +61,25 @@
   padding: 0.85em 2.5em;
   font-size: var(--font-size-base);
   font-weight: 600;
-  color: var(--color-text);
-  background: var(--color-accent-pink);
+  color: #030406; /* Texto oscuro para contraste */
+  
+  /* --- NUEVA PALETA NAÚTICA: Botón de Latón Bruñido --- */
+  background: linear-gradient(135deg, #f0c961 0%, #d4a037 100%); /* Gradiente dorado/latón */
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-full);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
-  box-shadow: var(--shadow-glow-purple);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
+  
+  /* Estilo Brújula/Sello Náutico Pulido */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 0 20px rgba(212, 160, 55, 0.3); /* Resplandor dorado tenue */
 }
 
 .landing__cta:hover {
   transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+  /* Un latón más pulido en hover */
+  background: linear-gradient(135deg, #f7d581 0%, #e0ac48 100%);
+  box-shadow: 0 0 35px rgba(212, 160, 55, 0.5);
 }
 
 .landing__cta:active {
@@ -73,7 +96,7 @@
   animation: bounceArrow 2s infinite;
 }
 
-/* Animación de rebote suave */
+/* Animación de rebote suave (mantenida) */
 @keyframes bounceArrow {
   0%, 100% {
     transform: translateY(0);
@@ -83,16 +106,13 @@
   }
 }
 
-/* Landing Section */
-
-/* Landing Section */
+/* Media Queries (Originales mantenidas) */
 @media (max-width: 768px) {
   .landing__title {
     font-size: var(--font-size-5xl);
   }
 }
 
-/* Landing Section */
 @media (max-width: 480px) {
   .landing__title {
     font-size: var(--font-size-4xl);
@@ -107,5 +127,3 @@
     font-size: var(--font-size-sm);
   }
 }
-
-

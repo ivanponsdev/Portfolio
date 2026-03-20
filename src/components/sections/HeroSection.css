@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background-color: #0b1120;
+  background-color: #030406;
   padding: 40px;
 }
 
@@ -51,7 +51,7 @@
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, rgba(11, 17, 32, 0) 0%, rgba(11, 17, 32, 0.6) 70%, rgba(11, 17, 32, 0.9) 100%);
+  background: radial-gradient(circle, rgba(3, 4, 6, 0) 0%, rgba(3, 4, 6, 0.6) 70%, rgba(3, 4, 6, 0.9) 100%);
   pointer-events: none;
 }
 
@@ -72,12 +72,12 @@
     stroke-width: 0.6px !important;
   }
 
-  /* España: Resplandor rosa neón constante */
+  /* España: Resplandor dorado latón constante */
   .interactive-map-wrapper svg path[data-my-location="true"] {
-    stroke: #ff3366 !important;
+    stroke: #d4a037 !important;
     stroke-width: 3px !important;
-    fill: rgba(255, 51, 102, 0.3) !important;
-    filter: drop-shadow(0 0 15px #ff3366) !important;
+    fill: rgba(212, 160, 55, 0.25) !important;
+    filter: drop-shadow(0 0 15px rgba(212, 160, 55, 0.5)) !important;
   }
 
   /* Efecto al tocar con el dedo en móvil */

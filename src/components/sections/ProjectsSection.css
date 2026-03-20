@@ -1,195 +1,256 @@
-/* Projects Section */
+/* ==========================================================================
+   PROJECTS SECTION - EL VISOR DE CRISTAL (PERISCOPIO DIGITAL)
+   ========================================================================== */
 
 .projects {
+  background-color: #000;
   z-index: 1;
   padding-top: calc(var(--navbar-height) + var(--spacing-3xl));
+  background: transparent;
 }
 
-/* Projects Section */
 .projects__section-title {
   text-align: center;
   font-size: var(--font-size-4xl);
   font-weight: 800;
   margin-bottom: var(--spacing-3xl);
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 4px; /* Aire cinematográfico */
 }
 
 .projects__title-accent {
-  color: var(--color-accent-pink);
+  color: #d4af37;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
 }
 
-/* Projects Section */
 .projects__list {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-3xl);
-  max-width: 900px;
+  gap: 50px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
-/* Projects Section */
+/* --- LA TARJETA: EL PANEL DE CRISTAL --- */
 .projects__card {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 0.8fr;
   gap: 0;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-border);
+  position: relative;
   overflow: hidden;
-  background: var(--color-bg-card);
-  transition: border-color var(--transition-base),
-              box-shadow var(--transition-base);
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.03) 0%, 
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  
+  /* Efecto Glassmorphism Profundo */
+  backdrop-filter: blur(15px) saturate(150%);
+  -webkit-backdrop-filter: blur(15px) saturate(150%);
+  
+  /* Bordes: Usamos un borde sutil pero con un degradado para que parezca luz */
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  border-radius: 4px;
+  
+  /* Sombra para dar volumen y despegarlo del fondo */
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    inset 0 0 30px rgba(212, 175, 55, 0.02);
+    
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
+/* --- DETALLES DE "MARCO TÉCNICO" (Corners) --- */
+/* Estos crean los pequeños ángulos en las esquinas que parecen soportes de metal */
+.projects__card::before, .projects__card::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  z-index: 2;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+.projects__card::before {
+  top: 0; left: 0;
+  border-right: none; border-bottom: none;
+}
+
+.projects__card::after {
+  bottom: 0; right: 0;
+  border-left: none; border-top: none;
+}
+
+/* Hover de la tarjeta: El panel se ilumina */
 .projects__card:hover {
-  border-color: var(--color-border-hover);
-  box-shadow: var(--shadow-card);
+  transform: translateY(-5px);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.7),
+    inset 0 0 40px rgba(212, 175, 55, 0.08);
 }
 
-/* Projects Section */
+.projects__card:hover::before, .projects__card:hover::after {
+  width: 40px;
+  height: 40px;
+  border-color: #d4af37;
+}
+
+/* --- CONTENEDOR DE IMAGEN --- */
 .projects__card-image-wrapper {
   position: relative;
-  min-height: 260px;
+  min-height: 350px;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(59, 130, 246, 0.1));
+  background: #000;
+  border-right: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .projects__card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0.7; /* Imagen un poco oscura para resaltar el texto */
+  transition: all 0.8s ease;
+  filter: contrast(1.1) brightness(0.8);
 }
 
-/* Projects Section */
-.projects__card-placeholder {
+.projects__card:hover .projects__card-image {
+  opacity: 1;
+  transform: scale(1.05);
+  filter: contrast(1) brightness(1);
+}
+
+/* Línea de Escaneado Laser */
+.projects__card-image-wrapper::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(to bottom, transparent, #d4af37, transparent);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+  opacity: 0;
+}
+
+.projects__card:hover .projects__card-image-wrapper::after {
+  opacity: 1;
+  animation: scanning 2s linear infinite;
+}
+
+@keyframes scanning {
+  0% { top: -10%; }
+  100% { top: 110%; }
+}
+
+/* --- INFO DEL PROYECTO (Lado derecho) --- */
+.projects__card-info {
+  padding: 40px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 100%;
-  gap: var(--spacing-sm);
+  position: relative;
+  z-index: 1;
 }
 
-.projects__card-placeholder-icon {
-  font-size: 3.5rem;
-}
-
-.projects__card-placeholder-text {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
-}
-
-/* Projects Section */
-.projects__card-overlay {
+/* Patrón de cuadrícula de fondo solo en la info */
+.projects__card-info::before {
+  content: "";
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(11, 17, 33, 0.75);
-  color: var(--color-text);
-  font-weight: 600;
-  font-size: var(--font-size-lg);
-  opacity: 0;
-  transition: opacity var(--transition-base);
-}
-
-.projects__card-image-wrapper:hover .projects__card-overlay {
-  opacity: 1;
-}
-
-/* Projects Section */
-.projects__card-info {
-  padding: var(--spacing-2xl);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: var(--spacing-md);
+  background-image: radial-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: -1;
 }
 
 .projects__card-title {
-  font-size: var(--font-size-xl);
+  font-family: 'Playfair Display', serif; /* O tu serif principal */
+  font-size: 1.8rem;
   font-weight: 700;
-  color: var(--color-accent-pink);
+  color: #fff;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.1);
 }
 
 .projects__card-desc {
-  font-size: var(--font-size-sm);
+  font-size: 0.95rem;
   line-height: 1.7;
-  text-align: justify;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 25px;
+  font-weight: 300;
 }
 
-/* Projects Section */
+/* --- TAGS: MÁS TÉCNICOS --- */
 .projects__card-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-sm);
-  margin-top: var(--spacing-sm);
+  gap: 10px;
+  margin-bottom: 30px;
 }
 
 .projects__tag {
-  padding: 0.3em 0.8em;
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  color: var(--color-accent-pink);
-  border: 1px solid rgba(236, 72, 153, 0.3);
-  border-radius: var(--radius-full);
-  background: rgba(236, 72, 153, 0.08);
+  padding: 4px 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #d4af37;
+  background: rgba(212, 175, 55, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: all 0.3s ease;
 }
 
-/* Projects Section */
-.projects__coming-soon {
-  text-align: center;
-  font-style: italic;
-  color: var(--color-text-dim);
-  margin-top: var(--spacing-3xl);
-  font-size: var(--font-size-base);
+.projects__tag:hover {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: #d4af37;
+  transform: translateY(-2px);
 }
 
-/* Projects Section */
-.projects__card--clickable {
+/* --- BOTÓN DE ACCIÓN --- */
+.projects__card-cta {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #fff;
+  border-bottom: 2px solid #d4af37;
+  padding-bottom: 5px;
+  width: fit-content;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
-.projects__card--clickable:hover {
-  border-color: rgba(236, 72, 153, 0.3);
-  box-shadow: 0 8px 32px rgba(236, 72, 153, 0.1);
+.projects__card:hover .projects__card-cta {
+  color: #d4af37;
+  padding-left: 15px;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
 }
 
-.projects__card-cta {
-  display: inline-block;
-  margin-top: var(--spacing-md);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  color: var(--color-accent-pink);
-  transition: all var(--transition-fast);
+/* --- TEXTO PRÓXIMAMENTE --- */
+.projects__coming-soon {
+  text-align: center;
+  margin-top: 60px;
+  color: rgba(212, 175, 55, 0.4);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  font-style: italic;
 }
 
-.projects__card--clickable:hover .projects__card-cta {
-  letter-spacing: 0.02em;
-}
-
-/* Projects Section */
-@media (max-width: 768px) {
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
   .projects__card {
     grid-template-columns: 1fr;
   }
-
   .projects__card-image-wrapper {
-    min-height: 200px;
+    min-height: 250px;
+    border-right: none;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
   }
-
   .projects__card-info {
-    padding: var(--spacing-xl);
-  }
-
-  .projects__section-title {
-    font-size: var(--font-size-3xl);
+    padding: 30px;
   }
 }
-
-@media (max-width: 480px) {
-  .projects__card-info {
-    padding: var(--spacing-lg);
-  }
-}
-
-

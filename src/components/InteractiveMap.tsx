@@ -48,21 +48,21 @@ const InteractiveMap: React.FC = () => {
                   onClick={() => handleCountryClick(geo.id)}
                   style={{
                     default: {
-                      fill: isMyLocation ? "rgba(255, 51, 102, 0.2)" : "rgba(30, 41, 59, 0.4)",
+                      fill: isMyLocation ? "rgba(212, 160, 55, 0.15)" : "rgba(30, 41, 59, 0.4)",
                       // CAMBIO: Ahora en PC también hay un borde azul muy, muy sutil de base
-                      stroke: isMyLocation ? "#ff3366" : "rgba(0, 229, 255, 0.08)",
+                      stroke: isMyLocation ? "#d4a037" : "rgba(0, 229, 255, 0.08)",
                       strokeWidth: isMyLocation ? 3.5 : 0.6,
                       outline: "none",
                       transition: "all 500ms ease",
                     },
                     hover: {
-                      fill: isMyLocation ? "rgba(255, 51, 102, 0.4)" : "rgba(0, 229, 255, 0.15)",
-                      stroke: isMyLocation ? "#ff3366" : "#00e5ff",
+                      fill: isMyLocation ? "rgba(212, 160, 55, 0.3)" : "rgba(0, 229, 255, 0.15)",
+                      stroke: isMyLocation ? "#f0c961" : "#1e293b",
                       strokeWidth: isMyLocation ? 4 : 2,
                       outline: "none",
                       cursor: "pointer",
                       filter: isMyLocation 
-                        ? "drop-shadow(0 0 20px #ff3366)" 
+                        ? "drop-shadow(0 0 15px rgba(212, 160, 55, 0.5))" 
                         : "drop-shadow(0 0 12px #00e5ff)",
                     },
                     pressed: { outline: "none" }

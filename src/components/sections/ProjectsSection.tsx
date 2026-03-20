@@ -1,28 +1,23 @@
-/* Projects Section - Portfolio projects showcase */
-
 import { useNavigate } from 'react-router-dom';
 import { RocketIcon } from '../icons/Icons';
 import type { Project } from '../../types';
 import './ProjectsSection.css';
 
-
 const PROJECTS: (Project & { route?: string })[] = [
   {
     id: 1,
-    title: 'Ultimate GYM',
+    title: 'ULTIMATE GYM',
     description:
-      'Sistema SPA de gestión de gimnasios con React + Node.js que integra autenticación segura, gestión de usuarios/clases/ejercicios, dashboards analíticos con visualización de datos, características de accesibilidad y chat de soporte.',
+      'Infraestructura integral para centros deportivos basada en MERN Stack. Implementación de una base de datos flexible con MongoDB para la gestión de rutinas dinámicas, lógica de servidor robusta en Node.js y una interfaz reactiva de alta fidelidad para el usuario final.',
     image: '/images/UG.jpg',
-    tags: ['React', 'Node.js', 'JavaScript', 'CSS', 'n8n'],
+    tags: ['REACT', 'NODE.JS', 'MONGODB', 'JAVASCRIPT', 'N8N', 'CSS'],
     link: 'https://ultimate-gym-project.vercel.app',
     repo: 'https://github.com/ivanponsdev/UltimateGym-Project',
     route: '/projects/ultimate-gym',
   },
-
 ];
 
-/** Texto que aparece si no hay más proyectos */
-const COMING_SOON_TEXT = 'Próximamente nuevos proyectos...';
+const COMING_SOON_TEXT = 'Siguientes coordenadas en desarrollo...';
 
 const ProjectsSection: React.FC = () => {
   const navigate = useNavigate();
@@ -30,28 +25,17 @@ const ProjectsSection: React.FC = () => {
   return (
     <section id="projects" className="projects section">
       <div className="container">
-        {/* ---- Título de sección ---- */}
         <h2 className="projects__section-title">
-          Mis <span className="projects__title-accent">Proyectos</span>
+          Expedientes de <span className="projects__title-accent">Proyectos</span>
         </h2>
 
-        {/* ---- Lista de proyectos ---- */}
         <div className="projects__list">
           {PROJECTS.map((project) => (
             <article
               key={project.id}
               className={`projects__card ${project.route ? 'projects__card--clickable' : ''}`}
               onClick={() => project.route && navigate(project.route)}
-              role={project.route ? 'link' : undefined}
-              tabIndex={project.route ? 0 : undefined}
-              onKeyDown={(e) => {
-                if (project.route && (e.key === 'Enter' || e.key === ' ')) {
-                  e.preventDefault();
-                  navigate(project.route);
-                }
-              }}
             >
-              {/* Imagen del proyecto */}
               <div className="projects__card-image-wrapper">
                 {project.image ? (
                   <img
@@ -59,38 +43,23 @@ const ProjectsSection: React.FC = () => {
                     alt={project.title}
                     className="projects__card-image"
                     loading="lazy"
-                    style={{ cursor: project.route ? 'pointer' : undefined }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (project.route) navigate(project.route);
-                    }}
                   />
                 ) : (
-                  /* Placeholder si no hay imagen */
-                  <div
-                    className="projects__card-placeholder"
-                    style={{ cursor: project.route ? 'pointer' : undefined }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      if (project.route) navigate(project.route);
-                    }}
-                  >
+                  <div className="projects__card-placeholder">
                     <span className="projects__card-placeholder-icon">
                       <RocketIcon size={48} />
                     </span>
                     <span className="projects__card-placeholder-text">
-                      Click para ver más
+                      ACCEDIENDO AL SISTEMA...
                     </span>
                   </div>
                 )}
               </div>
 
-              {/* Info del proyecto */}
               <div className="projects__card-info">
                 <h3 className="projects__card-title">{project.title}</h3>
                 <p className="projects__card-desc">{project.description}</p>
 
-                {/* Tags de tecnología */}
                 <div className="projects__card-tags">
                   {project.tags.map((tag) => (
                     <span key={tag} className="projects__tag">
@@ -99,10 +68,9 @@ const ProjectsSection: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Ver detalles */}
                 {project.route && (
                   <span className="projects__card-cta">
-                    Ver proyecto completo →
+                    Explorar proyecto →
                   </span>
                 )}
               </div>
@@ -110,7 +78,6 @@ const ProjectsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* ---- Próximamente ---- */}
         <p className="projects__coming-soon">{COMING_SOON_TEXT}</p>
       </div>
     </section>

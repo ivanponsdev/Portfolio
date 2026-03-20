@@ -8,8 +8,8 @@
 /* Custom Properties */
 :root {
   /* Global Styles */
-  --color-bg:          #0b1121;
-  --color-bg-lighter:  #111827;
+  --color-bg:          #030406;
+  --color-bg-lighter:  #0a0d12;
   --color-bg-card:     rgba(255, 255, 255, 0.04);
   --color-border:      rgba(255, 255, 255, 0.08);
   --color-border-hover:rgba(255, 255, 255, 0.15);
@@ -25,12 +25,14 @@
   --color-accent-pink:   #ec4899;
   --color-accent-green:  #34d399;
   --color-accent-cyan:   #22d3ee;
+  --color-accent-gold:   #f0c961;
+  --color-accent-gold-dark: #d4a037;
 
   /* Gradientes */
   --gradient-title: linear-gradient(135deg, #ffffff, #ec4899);
   --gradient-button: linear-gradient(135deg, #3b82f6, #8b5cf6, #a855f7);
   --gradient-button-hover: linear-gradient(135deg, #2563eb, #7c3aed, #9333ea);
-  --gradient-navbar-line: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  --gradient-navbar-line: linear-gradient(90deg, #d4a037, #f0c961, #d4a037);
 
   /* Global Styles */
   --font-family: 'Inter', system-ui, -apple-system, sans-serif;
