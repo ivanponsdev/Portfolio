@@ -69,9 +69,6 @@ const UGCTA: React.FC = () => {
             </a>
           </div>
 
-          <p className="ug-cta__server-note">
-            » Servidor gratuito — si lleva tiempo inactivo puede tardar unos segundos en responder la primera vez.
-          </p>
         </div>
 
         <div className="ug-cta__back">

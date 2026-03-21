@@ -26,7 +26,7 @@ const ProjectsSection: React.FC = () => {
     <section id="projects" className="projects section">
       <div className="container">
         <h2 className="projects__section-title">
-          Expedientes de <span className="projects__title-accent">Proyectos</span>
+          Proyectos
         </h2>
 
         <div className="projects__list">

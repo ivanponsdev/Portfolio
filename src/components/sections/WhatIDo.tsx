@@ -91,7 +91,7 @@ const WhatIDo: React.FC = () => {
             <div className="x-wrapper">
               <span className="x-letter">X</span>
             </div>
-            <p className="x-label">Punto de destino alcanzado</p>
+            <p className="x-label"></p>
           </div>
         </div>
       </div>
