@@ -1,121 +1,254 @@
-/* Ultimate GYM - CTA Section */
-
+/* ── ACCESO AL PROYECTO ─────────────────────────── */
 .ug-cta {
-  padding: 6rem 0 4rem;
-  background: var(--color-bg);
-}
-
-.ug-cta__card {
   position: relative;
-  text-align: center;
-  padding: 4rem 2rem;
-  border-radius: var(--radius-xl);
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  padding: 80px 2rem 80px;
+  background-color: #050505;
+  border-top: 1px solid rgba(212, 175, 55, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
   overflow: hidden;
 }
 
-/* Decorative glow */
-.ug-cta__glow {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 30% 0%, rgba(236, 72, 153, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse at 70% 100%, rgba(59, 130, 246, 0.05) 0%, transparent 60%);
-  pointer-events: none;
+.ug-cta__container {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+/* Header */
+.ug-cta__header {
+  text-align: center;
+}
+
+.ug-cta__badge {
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0.3rem 1rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
 }
 
 .ug-cta__title {
-  position: relative;
-  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
-  margin-bottom: 1rem;
-  z-index: 1;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  letter-spacing: 4px;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
 }
 
-.ug-cta__text {
-  position: relative;
-  color: var(--color-text-muted);
+.ug-cta__subtitle {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.9rem;
+  line-height: 1.6;
   max-width: 520px;
-  margin: 0 auto 2rem;
-  line-height: 1.7;
-  z-index: 1;
+  margin: 0 auto;
 }
 
-/* CTA links */
-.ug-cta__links {
-  position: relative;
+/* Body */
+.ug-cta__body {
+  width: 100%;
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  z-index: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
 }
 
-.ug-cta__link {
+/* Credentials */
+.ug-cta__credentials {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 3px solid #d4af37;
+  padding: 1.5rem 2rem;
+}
+
+.ug-cta__cred-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+
+.ug-cta__cred-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 3px;
+  color: #d4af37;
+  text-transform: uppercase;
+}
+
+.ug-cta__cred-dot {
+  width: 8px;
+  height: 8px;
+  background: #d4af37;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: ug-cta-pulse 2s ease infinite;
+}
+
+@keyframes ug-cta-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.ug-cta__cred-grid {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.ug-cta__cred-divider {
+  width: 1px;
+  align-self: stretch;
+  background: rgba(255, 255, 255, 0.14);
+  margin: 0 1rem;
+}
+
+.ug-cta__cred-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ug-cta__cred-role {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.95);
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.ug-cta__cred-field {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.ug-cta__cred-key {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: #d4af37;
+  letter-spacing: 1px;
+  min-width: 38px;
+}
+
+.ug-cta__cred-val {
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 0.5px;
+}
+
+.ug-cta__cred-note {
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.62);
+  margin-top: 1rem;
+  letter-spacing: 0.5px;
+}
+
+/* Action buttons */
+.ug-cta__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ug-cta__btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-full);
-  font-size: var(--font-size-sm);
+  padding: 0.75rem 1.8rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
   font-weight: 600;
   text-decoration: none;
-  transition: all var(--transition-base);
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
-.ug-cta__link--primary {
-  background: var(--color-accent-pink);
-  color: #fff;
+.ug-cta__btn--primary {
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid #d4af37;
+  color: #d4af37;
 }
 
-.ug-cta__link--primary:hover {
-  background: #db2777;
-  box-shadow: 0 0 24px rgba(236, 72, 153, 0.35);
+.ug-cta__btn--primary:hover {
+  background: rgba(212, 175, 55, 0.15);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
 }
 
-.ug-cta__link--secondary {
+.ug-cta__btn--secondary {
   background: transparent;
-  border: 1px solid var(--color-border-hover);
-  color: var(--color-text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.65);
 }
 
-.ug-cta__link--secondary:hover {
-  border-color: var(--color-text);
-  color: var(--color-text);
+.ug-cta__btn--secondary:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.75);
 }
 
-.ug-cta__link--secondary svg {
-  opacity: 0.7;
+/* Server note */
+.ug-cta__server-note {
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.38);
+  text-align: center;
+  letter-spacing: 0.5px;
+  max-width: 500px;
 }
 
-/* Back text */
-.ug-cta__back-text {
-  position: relative;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-dim);
-  z-index: 1;
+/* Back link */
+.ug-cta__back {
+  margin-top: -0.5rem;
 }
 
 .ug-cta__back-link {
-  color: var(--color-accent-pink);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.2s ease;
 }
 
 .ug-cta__back-link:hover {
-  color: #f472b6;
+  color: rgba(255, 255, 255, 0.55);
 }
 
-/* Ultimate GYM - CTA Section */
+/* Responsive */
 @media (max-width: 600px) {
-  .ug-cta__card {
-    padding: 3rem 1.5rem;
+  .ug-cta {
+    padding: 70px 1.5rem 70px;
   }
 
-  .ug-cta__links {
+  .ug-cta__credentials {
+    padding: 1.2rem;
+  }
+
+  .ug-cta__cred-grid {
     flex-direction: column;
-    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .ug-cta__cred-divider {
+    display: none;
   }
 }
 

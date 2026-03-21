@@ -52,8 +52,10 @@ const technologies: Tech[] = [
 
 const TechCompass: React.FC = () => {
   const [selected, setSelected] = useState<Tech | null>(technologies[4]);
+  const [mobileSelected, setMobileSelected] = useState<Tech>(technologies[4]);
 
   return (
+    <>
     <div className="tech-compass-layout">
       <div className="compass-area">
         <div className="compass-container">
@@ -108,6 +110,33 @@ const TechCompass: React.FC = () => {
         </div>
       </div>
     </div>
+
+    {/* ─── Mobile Grid (hidden on desktop via CSS) ─── */}
+    <div className="mobile-grid-wrapper">
+      <div className="mobile-grid" role="list">
+        {technologies.map((tech) => (
+          <button
+            key={tech.name}
+            role="listitem"
+            className={`mobile-grid-item${mobileSelected.name === tech.name ? ' active' : ''}`}
+            onClick={() => setMobileSelected(tech)}
+            aria-label={tech.name}
+          >
+            <img src={tech.icon} alt="" aria-hidden="true" />
+            <span>{tech.name}</span>
+          </button>
+        ))}
+      </div>
+
+      <div className="mobile-grid-panel">
+        <img src={mobileSelected.icon} alt={mobileSelected.name} />
+        <div className="mobile-grid-panel-text">
+          <h3>{mobileSelected.name}</h3>
+          <p>{mobileSelected.description}</p>
+        </div>
+      </div>
+    </div>
+    </>
   );
 };
 

@@ -1,81 +1,126 @@
-import { HomeIcon, LockIcon, ClipboardListIcon, DumbbellIcon, CalendarIcon, BookOpenIcon, BarChartIcon, ShieldIcon, PlusIcon, SendIcon, BotIcon } from '../icons/Icons';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiUser, FiShield } from 'react-icons/fi';
 import './UGFlows.css';
 
-interface FlowStep {
-  label: string;
-  icon: React.ReactNode;
-}
+const UGFlows = () => {
+  const [activeTab, setActiveTab] = useState<'user' | 'admin'>('user');
 
-const USER_FLOW: FlowStep[] = [
-  { label: 'Landing', icon: <HomeIcon size={20} /> },
-  { label: 'Login', icon: <LockIcon size={20} /> },
-  { label: 'Dashboard Personal', icon: <ClipboardListIcon size={20} /> },
-  { label: 'Explorar Ejercicios / Clases', icon: <DumbbellIcon size={20} /> },
-  { label: 'Registrarse en Clase', icon: <CalendarIcon size={20} /> },
-  { label: 'Ver Guías de Entrenamiento, Alimentación y Hábitos', icon: <BookOpenIcon size={20} /> },
-  { label: 'Analytics Personal', icon: <BarChartIcon size={20} /> },
-];
+  const flows = {
+    user: [
+      {
+        id: 'AUTH-01',
+        title: 'Registro & Autenticación',
+        desc: 'Creación de cuenta con datos personales. Acceso seguro mediante tokens JWT y contraseñas cifradas con Bcrypt.'
+      },
+      {
+        id: 'PROF-02',
+        title: 'Perfil & Objetivos',
+        desc: 'Configuración de nombre, edad, sexo y objetivos de entrenamiento. Ajuste de metas semanales de asistencia a clases.'
+      },
+      {
+        id: 'CLASS-03',
+        title: 'Explorar & Reservar Clases',
+        desc: 'Catálogo de clases disponibles con detalle de horario, cupo y nivel de dificultad. Inscripción y cancelación en tiempo real.'
+      },
+      {
+        id: 'GUIDE-04',
+        title: 'Guías de Entrenamiento PDF',
+        desc: 'Descarga de guías personalizadas según objetivo: pérdida de peso, ganancia muscular o resistencia cardiovascular.'
+      },
+      {
+        id: 'STATS-05',
+        title: 'Estadísticas Personales',
+        desc: 'Panel de progreso con clases asistidas, cumplimiento de metas semanales y evolución de rendimiento a lo largo del tiempo.'
+      }
+    ],
+    admin: [
+      {
+        id: 'USERS-01',
+        title: 'Gestión de Usuarios',
+        desc: 'Vista completa de usuarios registrados. Creación manual, edición de datos personales, asignación de roles y eliminación de cuentas.'
+      },
+      {
+        id: 'CLASS-02',
+        title: 'Administración de Clases',
+        desc: 'CRUD de clases: nombre, horario, cupo máximo, nivel de dificultad e instructor asignado. Visualización de alumnos inscritos.'
+      },
+      {
+        id: 'EXER-03',
+        title: 'Catálogo de Ejercicios',
+        desc: 'Gestión del banco de ejercicios con clasificación por grupo muscular, nivel de dificultad y equipamiento necesario.'
+      },
+      {
+        id: 'PDF-04',
+        title: 'Guías & Contenido PDF',
+        desc: 'Subida, edición y eliminación de guías de entrenamiento en PDF. Asignación por objetivo específico de usuario.'
+      },
+      {
+        id: 'KPI-05',
+        title: 'Estadísticas & Exportación',
+        desc: 'Métricas globales: usuarios activos, asistencias totales y distribución por objetivos. Exportación de reportes descargables.'
+      }
+    ]
+  };
 
-const ADMIN_FLOW: FlowStep[] = [
-  { label: 'Dashboard Admin', icon: <ShieldIcon size={20} /> },
-  { label: 'Crear Ejercicio', icon: <PlusIcon size={20} /> },
-  { label: 'Crear Clase', icon: <CalendarIcon size={20} /> },
-  { label: 'Ver Estadísticas Globales', icon: <BarChartIcon size={20} /> },
-  { label: 'Exportar Datos', icon: <SendIcon size={20} /> },
-  { label: 'Enviar Guías Automatizadas (entrenamiento, alimentación y hábitos)', icon: <BotIcon size={20} /> },
-];
-
-const FlowTimeline: React.FC<{ steps: FlowStep[]; accent: string }> = ({
-  steps,
-  accent,
-}) => (
-  <div className="ug-flows__timeline">
-    {steps.map((step, i) => (
-      <div key={step.label} className="ug-flows__step">
-        <div className="ug-flows__step-dot" style={{ borderColor: accent }}>
-          <span className="ug-flows__step-icon">{step.icon}</span>
-        </div>
-        <span className="ug-flows__step-label">{step.label}</span>
-        {i < steps.length - 1 && (
-          <div className="ug-flows__step-connector" style={{ background: accent }} />
-        )}
-      </div>
-    ))}
-  </div>
-);
-
-const UGFlows: React.FC = () => {
   return (
-    <section id="ug-flows" className="ug-flows">
-      <div className="container">
-        <h2 className="ug-flows__title">
-          Recorrido <span className="ug-flows__accent">de Usuario</span>
-        </h2>
-        <p className="ug-flows__subtitle">
-          Dos perspectivas, una plataforma
-        </p>
+    <section className="ug-flows" id="ug-flows">
+      <div className="ug-flows__container">
 
-        <div className="ug-flows__columns">
-          {/* User flow */}
-          <div className="ug-flows__column">
-            <h3 className="ug-flows__column-title">
-              <span className="ug-flows__column-badge ug-flows__column-badge--user">
-                👤 Usuario
-              </span>
-            </h3>
-            <FlowTimeline steps={USER_FLOW} accent="#ec4899" />
-          </div>
-
-          {/* Admin flow */}
-          <div className="ug-flows__column">
-            <h3 className="ug-flows__column-title">
-              <span className="ug-flows__column-badge ug-flows__column-badge--admin">
-                🛡️ Administrador
-              </span>
-            </h3>
-            <FlowTimeline steps={ADMIN_FLOW} accent="#3b82f6" />
-          </div>
+        <div className="ug-flows__header">
+          <span className="ug-flows__badge">PROTOCOLO // FLUJOS</span>
+          <h2 className="ug-flows__title">
+            Recorrido de <span style={{ color: '#d4af37' }}>Usuario</span>
+          </h2>
+          <p className="ug-flows__subtitle">Dos perfiles · Flujo completo de funcionalidades</p>
         </div>
+
+        <div className="ug-flows__tabs">
+          <button
+            className={`ug-flows__tab${activeTab === 'user' ? ' ug-flows__tab--active' : ''}`}
+            onClick={() => setActiveTab('user')}
+          >
+            <FiUser /> MODO USUARIO
+          </button>
+          <button
+            className={`ug-flows__tab${activeTab === 'admin' ? ' ug-flows__tab--active' : ''}`}
+            onClick={() => setActiveTab('admin')}
+          >
+            <FiShield /> MODO ADMIN
+          </button>
+        </div>
+
+        <div className="ug-flows__body">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 10 }}
+              transition={{ duration: 0.2 }}
+              className="ug-flows__steps"
+            >
+              {flows[activeTab].map((item, index) => (
+                <div key={item.id} className="ug-flows__step">
+                  <div className="ug-flows__step-visual">
+                    <div className="ug-flows__step-circle">
+                      {String(index + 1).padStart(2, '0')}
+                    </div>
+                    {index !== flows[activeTab].length - 1 && (
+                      <div className="ug-flows__step-line" />
+                    )}
+                  </div>
+                  <div className="ug-flows__step-content">
+                    <p className="ug-flows__step-id">{item.id}</p>
+                    <h4 className="ug-flows__step-title">{item.title}</h4>
+                    <p className="ug-flows__step-desc">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
       </div>
     </section>
   );

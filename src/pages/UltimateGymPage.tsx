@@ -10,7 +10,10 @@ import UGN8N from '../components/ug/UGN8N';
 import UGResults from '../components/ug/UGResults';
 import UGCTA from '../components/ug/UGCTA';
 import UGNavigation from '../components/ug/UGNavigation';
+import ScrollDownArrow from '../components/ScrollDownArrow';
 import './UltimateGymPage.css';
+
+const UG_SECTIONS = ['ug-hero', 'ug-gallery', 'ug-overview', 'ug-features', 'ug-flows', 'ug-tech', 'ug-n8n', 'ug-results', 'ug-cta'];
 
 const UltimateGymPage: React.FC = () => {
   const navigate = useNavigate();
@@ -32,6 +35,7 @@ const UltimateGymPage: React.FC = () => {
       </button>
 
       <UGNavigation />
+      <ScrollDownArrow sectionIds={UG_SECTIONS} />
 
       <main>
         <UGHero />

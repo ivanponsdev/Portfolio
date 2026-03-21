@@ -1,7 +1,9 @@
-import { MonitorIcon, WrenchIcon, BotIcon, AccessibilityIcon, DatabaseIcon } from '../icons/Icons';
+import React from 'react';
+import { MonitorIcon, WrenchIcon, BotIcon, AccessibilityIcon } from '../icons/Icons';
 import './UGTechStack.css';
 
 interface TechLayer {
+  id: string;
   title: string;
   icon: React.ReactNode;
   color: string;
@@ -10,9 +12,10 @@ interface TechLayer {
 
 const LAYERS: TechLayer[] = [
   {
+    id: 'FE-01',
     title: 'Frontend',
-    icon: <MonitorIcon size={24} />,
-    color: '#ec4899',
+    icon: <MonitorIcon size={20} />,
+    color: '#d4829a',
     techs: [
       { name: 'React 19', desc: 'UI moderna e interactiva' },
       { name: 'Vite', desc: 'Bundler optimizado' },
@@ -22,9 +25,10 @@ const LAYERS: TechLayer[] = [
     ],
   },
   {
+    id: 'BE-02',
     title: 'Backend',
-    icon: <WrenchIcon size={24} />,
-    color: '#3b82f6',
+    icon: <WrenchIcon size={20} />,
+    color: '#7aa0c8',
     techs: [
       { name: 'Node.js + Express', desc: 'API REST' },
       { name: 'MongoDB + Mongoose', desc: 'Persistencia NoSQL' },
@@ -34,9 +38,10 @@ const LAYERS: TechLayer[] = [
     ],
   },
   {
+    id: 'N8N-03',
     title: 'Automatizaciones',
-    icon: <BotIcon size={24} />,
-    color: '#a78bfa',
+    icon: <BotIcon size={20} />,
+    color: '#ae85ae',
     techs: [
       { name: 'n8n', desc: 'Orquestación de workflows' },
       { name: 'Event Triggers', desc: 'Triggers por eventos' },
@@ -44,9 +49,10 @@ const LAYERS: TechLayer[] = [
     ],
   },
   {
+    id: 'ACC-04',
     title: 'Accesibilidad',
-    icon: <AccessibilityIcon size={24} />,
-    color: '#34d399',
+    icon: <AccessibilityIcon size={20} />,
+    color: '#88b288',
     techs: [
       { name: 'WCAG 2.1 AA', desc: 'Cumplimiento normativo' },
       { name: 'Widget Accesibilidad', desc: 'Controles de usuario' },
@@ -55,73 +61,70 @@ const LAYERS: TechLayer[] = [
   },
 ];
 
+const ARCH_NODES = [
+  { id: 'FE-01', label: 'React SPA', sub: 'Vite + Router', color: '#d4829a' },
+  { id: 'BE-02', label: 'Node.js API', sub: 'Express + JWT', color: '#7aa0c8' },
+  { id: 'DB-03', label: 'MongoDB', sub: 'Mongoose ODM', color: '#88b288' },
+  { id: 'N8N-04', label: 'n8n', sub: 'Workflows', color: '#ae85ae' },
+];
+
 const UGTechStack: React.FC = () => {
   return (
     <section id="ug-tech" className="ug-tech">
-      <div className="container">
-        <h2 className="ug-tech__title">
-          Stack <span className="ug-tech__accent">Tecnológico</span>
-        </h2>
+      <div className="ug-tech__container">
+        <header className="ug-tech__header">
+          <h2 className="ug-tech__title">STACK TECNOLÓGICO</h2>
+          <p className="ug-tech__subtitle">Capas del sistema · Tecnologías · Decisiones de arquitectura</p>
+        </header>
 
         <div className="ug-tech__grid">
           {LAYERS.map((layer) => (
-            <div key={layer.title} className="ug-tech__layer">
-              {/* Layer header */}
-              <div className="ug-tech__layer-header">
-                <span className="ug-tech__layer-icon">{layer.icon}</span>
-                <h3
-                  className="ug-tech__layer-title"
-                  style={{ color: layer.color }}
-                >
-                  {layer.title}
-                </h3>
+            <article
+              key={layer.id}
+              className="ug-tech__card"
+              style={{ '--layer-color': layer.color } as React.CSSProperties}
+            >
+              <div className="ug-tech__card-head">
+                <span className="ug-tech__card-id">{layer.id}</span>
+                <span className="ug-tech__card-icon" style={{ color: layer.color }}>{layer.icon}</span>
               </div>
-
-              {/* Line accent */}
-              <div
-                className="ug-tech__layer-line"
-                style={{ background: layer.color }}
-              />
-
-              {/* Techs */}
+              <h3 className="ug-tech__card-title" style={{ color: layer.color }}>
+                {layer.title.toUpperCase()}
+              </h3>
               <ul className="ug-tech__list">
                 {layer.techs.map((t) => (
                   <li key={t.name} className="ug-tech__item">
-                    <span className="ug-tech__item-name">{t.name}</span>
-                    <span className="ug-tech__item-desc">{t.desc}</span>
+                    <span className="ug-tech__bullet">»</span>
+                    <span>
+                      <span className="ug-tech__item-name">{t.name}</span>
+                      <span className="ug-tech__item-sep"> — </span>
+                      <span className="ug-tech__item-desc">{t.desc}</span>
+                    </span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </article>
           ))}
         </div>
 
-        {/* Architecture diagram placeholder */}
         <div className="ug-tech__arch">
-          <div className="ug-tech__arch-diagram">
-            <div className="ug-tech__arch-node ug-tech__arch-node--client">
-              <MonitorIcon size={24} />
-              <strong>React SPA</strong>
-              <small>Vite + Router</small>
-            </div>
-            <div className="ug-tech__arch-arrow">⟷</div>
-            <div className="ug-tech__arch-node ug-tech__arch-node--server">
-              <WrenchIcon size={24} />
-              <strong>Node.js API</strong>
-              <small>Express + JWT</small>
-            </div>
-            <div className="ug-tech__arch-arrow">⟷</div>
-            <div className="ug-tech__arch-node ug-tech__arch-node--db">
-              <DatabaseIcon size={24} />
-              <strong>MongoDB</strong>
-              <small>Mongoose ODM</small>
-            </div>
-            <div className="ug-tech__arch-arrow ug-tech__arch-arrow--n8n">↕</div>
-            <div className="ug-tech__arch-node ug-tech__arch-node--n8n">
-              <BotIcon size={24} />
-              <strong>n8n</strong>
-              <small>Workflows</small>
-            </div>
+          <p className="ug-tech__arch-label">DIAGRAMA DE ARQUITECTURA</p>
+          <div className="ug-tech__arch-row">
+            {ARCH_NODES.map((node, i) => (
+              <React.Fragment key={node.id}>
+                <div
+                  className="ug-tech__arch-node"
+                  style={{ '--node-color': node.color } as React.CSSProperties}
+                >
+                  <span className="ug-tech__arch-node-id">{node.id}</span>
+                  <span className="ug-tech__arch-node-label">{node.label}</span>
+                  <span className="ug-tech__arch-node-sub">{node.sub}</span>
+                </div>
+                {i < ARCH_NODES.length - 1 && (
+                  <div className="ug-tech__arch-connector">—</div>
+                )}
+              </React.Fragment>
+            ))}
           </div>
         </div>
       </div>

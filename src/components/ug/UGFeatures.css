@@ -1,123 +1,115 @@
-/* Ultimate GYM - Features Section */
-
+/* --- Contenedor Principal Ajustado --- */
 .ug-features {
-  padding: 6rem 0;
-  background: linear-gradient(180deg, var(--color-bg) 0%, #0e1528 100%);
-}
-
-.ug-features__title {
-  text-align: center;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  margin-bottom: 0.75rem;
-}
-
-.ug-features__accent {
-  color: var(--color-accent-pink);
-}
-
-.ug-features__subtitle {
-  text-align: center;
-  color: var(--color-text-muted);
-  font-size: var(--font-size-base);
-  margin-bottom: 3rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Grid: 3 cols top, 2 cols bottom centered */
-.ug-features__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-/* Feature card */
-.ug-features__card {
-  background: var(--color-bg-card);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 1.75rem 1.5rem;
-  transition: all var(--transition-base);
-}
-
-/* Colores únicos por tarjeta */
-.ug-features__card--0 {
-  border-color: #ec4899;
-}
-.ug-features__card--1 {
-  border-color: #f59e42;
-}
-.ug-features__card--2 {
-  border-color: #3b82f6;
-}
-.ug-features__card--3 {
-  border-color: #10b981;
-}
-.ug-features__card--4 {
-  border-color: #a21caf;
-}
-
-.ug-features__card:hover {
-  border-color: rgba(236, 72, 153, 0.25);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
-}
-
-.ug-features__card-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-}
-
-.ug-features__card-icon {
-  font-size: 1.75rem;
-  flex-shrink: 0;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Forzamos a que intente mantenerse en el viewport pero con margen de seguridad */
+  min-height: 100vh; 
+  padding: 4rem 2rem; 
+  background-color: #050505;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.ug-features__container {
+  max-width: 1100px; /* Un poco más estrecho para compactar */
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --- Header más apretado --- */
+.ug-features__header {
+  text-align: center;
+  margin-bottom: 2.5rem; /* Reducido a la mitad */
+}
+
+.ug-features__title {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem); /* Ligeramente más pequeño */
+  letter-spacing: 4px;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.ug-features__subtitle {
+  color: #cccccc;
+  font-size: 0.9rem;
+  font-family: 'Courier New', monospace;
+}
+
+/* --- Grid Inteligente (3 columnas siempre) --- */
+.ug-features__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Sistema de 6 para centrar fácil */
+  gap: 1.2rem;
+}
+
+.ug-features__card {
+  grid-column: span 2; /* Cada tarjeta ocupa 2 de 6 (total 3 columnas) */
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 1.5rem; /* Padding interno reducido */
+  border-left: 3px solid var(--feat-color);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Centrado de las dos últimas tarjetas */
+.ug-features__card--3 {
+  grid-column: 2 / 4; /* Centra la cuarta tarjeta */
+}
+
+.ug-features__card--4 {
+  grid-column: 4 / 6; /* Centra la quinta tarjeta */
+}
+
+.ug-features__card-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 .ug-features__card-title {
-  font-size: var(--font-size-lg);
-  color: var(--color-text);
+  font-size: 1.1rem; /* Título más pequeño */
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
 }
 
-/* Feature list */
+/* --- Lista muy compacta --- */
 .ug-features__list {
+  list-style: none;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.4rem; /* Espacio mínimo entre líneas */
 }
 
 .ug-features__list-item {
+  font-size: 0.85rem; /* Texto pequeño pero nítido */
+  color: #f0f0f0;
+  line-height: 1.3;
   display: flex;
-  align-items: flex-start;
   gap: 0.5rem;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
-  line-height: 1.5;
 }
 
-.ug-features__check {
-  color: var(--color-text-muted);
-  font-weight: 700;
-  flex-shrink: 0;
-  margin-top: 0.1em;
-}
-
-/* Ultimate GYM - Features Section */
-@media (max-width: 1024px) {
+/* --- Ajustes Responsive --- */
+@media (max-width: 900px) {
   .ug-features__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr; /* 2 columnas en tablets */
+  }
+  .ug-features__card, .ug-features__card--3, .ug-features__card--4 {
+    grid-column: span 1;
+  }
+  .ug-features {
+    min-height: auto;
+    padding: 3rem 1rem;
   }
 }
 
 @media (max-width: 600px) {
   .ug-features__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* 1 columna en móvil */
   }
 }
-
-

@@ -1,124 +1,186 @@
-/* Ultimate GYM - Flows Section */
-
+/* ── FLUJOS DE USUARIO ─────────────────────────── */
 .ug-flows {
-  padding: 6rem 0;
-  background: var(--color-bg);
+  position: relative;
+  padding: 60px 2rem;
+  background-color: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ug-flows__container {
+  max-width: 1050px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Header */
+.ug-flows__header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.ug-flows__badge {
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0.3rem 1rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
 }
 
 .ug-flows__title {
-  text-align: center;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  margin-bottom: 0.5rem;
-}
-
-.ug-flows__accent {
-  color: var(--color-accent-pink);
+  font-family: 'Courier New', monospace;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: 4px;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
 }
 
 .ug-flows__subtitle {
-  text-align: center;
-  color: var(--color-text-muted);
-  margin-bottom: 3rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
 }
 
-/* Two-column layout */
-.ug-flows__columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-}
-
-.ug-flows__column {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 2rem 1.5rem;
-}
-
-.ug-flows__column-title {
+/* Tabs */
+.ug-flows__tabs {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
   margin-bottom: 1.5rem;
-  text-align: center;
 }
 
-.ug-flows__column-badge {
-  display: inline-block;
-  padding: 0.4rem 1rem;
-  border-radius: var(--radius-full);
-  font-size: var(--font-size-sm);
+.ug-flows__tab {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.55);
+  padding: 0.55rem 1.4rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
   font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
 }
 
-.ug-flows__column-badge--user {
-  background: rgba(236, 72, 153, 0.12);
-  color: #ec4899;
-  border: 1px solid rgba(236, 72, 153, 0.3);
+.ug-flows__tab:hover {
+  border-color: rgba(255, 255, 255, 0.38);
+  color: rgba(255, 255, 255, 0.78);
 }
 
-.ug-flows__column-badge--admin {
-  background: rgba(59, 130, 246, 0.12);
-  color: #3b82f6;
-  border: 1px solid rgba(59, 130, 246, 0.3);
+.ug-flows__tab--active {
+  border-color: #d4af37;
+  color: #d4af37;
+  background: rgba(212, 175, 55, 0.05);
 }
 
-/* Timeline */
-.ug-flows__timeline {
+/* Body panel */
+.ug-flows__body {
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 3px solid #d4af37;
+  padding: 1.5rem 2rem;
+}
+
+/* Steps timeline */
+.ug-flows__steps {
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
 .ug-flows__step {
-  position: relative;
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.75rem 0;
+  gap: 1.2rem;
+  align-items: flex-start;
 }
 
-.ug-flows__step-dot {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 2px solid;
+.ug-flows__step-visual {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background: var(--color-bg);
   flex-shrink: 0;
-  position: relative;
-  z-index: 1;
 }
 
-.ug-flows__step-icon {
-  font-size: 1.1rem;
+.ug-flows__step-circle {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #d4af37;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  color: #d4af37;
+  background: #050505;
+  flex-shrink: 0;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-.ug-flows__step-label {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
-  font-weight: 500;
+.ug-flows__step:hover .ug-flows__step-circle {
+  background: #d4af37;
+  color: #000;
 }
 
-/* Connector line between dots */
-.ug-flows__step-connector {
-  position: absolute;
-  left: 20px;
-  top: calc(50% + 21px);
-  width: 2px;
-  height: calc(100% - 12px);
-  opacity: 0.3;
-  z-index: 0;
+.ug-flows__step-line {
+  width: 1px;
+  flex-grow: 1;
+  min-height: 20px;
+  background: rgba(255, 255, 255, 0.14);
+  margin: 6px 0;
 }
 
-/* Ultimate GYM - Flows Section */
-@media (max-width: 768px) {
-  .ug-flows__columns {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+/* Step content */
+.ug-flows__step-content {
+  padding-bottom: 1rem;
+  flex: 1;
+}
+
+.ug-flows__step-id {
+  font-family: 'Courier New', monospace;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.42);
+  letter-spacing: 2px;
+  margin: 0 0 0.2rem 0;
+}
+
+.ug-flows__step-title {
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin: 0 0 0.4rem 0;
+}
+
+.ug-flows__step-desc {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 650px) {
+  .ug-flows {
+    padding: 50px 1.2rem;
+  }
+  .ug-flows__body {
+    padding: 1.5rem 1.2rem;
+  }
+  .ug-flows__tabs {
+    flex-direction: column;
+    align-items: center;
   }
 }
-
-

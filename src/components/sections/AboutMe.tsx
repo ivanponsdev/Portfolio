@@ -9,7 +9,7 @@ const BIO_INTRO: string =
 
 const SOCIAL_LINKS: SocialLink[] = [
   { name: 'LinkedIn', url: 'https://www.linkedin.com/in/iv%C3%A1n-pons-mart%C3%ADnez-617609183/', icon: 'linkedin' },
-  { name: 'Email', url: 'mailto:ivanponsdeonil@hotmail.es', icon: 'email' },
+  { name: 'Email', url: 'mailto:ivanponsdeonil@gmail.com', icon: 'email' },
   { name: 'GitHub', url: 'https://github.com/ivanponsdev', icon: 'github' },
 ];
 

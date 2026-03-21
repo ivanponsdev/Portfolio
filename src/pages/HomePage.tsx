@@ -5,11 +5,13 @@ import AboutMe from '../components/sections/AboutMe';
 import WhatIDo from '../components/sections/WhatIDo';
 import TechStack from '../components/sections/TechStack';
 import ProjectsSection from '../components/sections/ProjectsSection';
+import ScrollDownArrow from '../components/ScrollDownArrow';
 
 const HomePage: React.FC = () => {
   return (
     <>
       <Navbar showAfterLanding={true} />
+      <ScrollDownArrow />
       <main>
         <LandingSection />
         <HeroSection />

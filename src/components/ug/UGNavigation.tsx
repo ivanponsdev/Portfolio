@@ -7,6 +7,7 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
+  { label: 'Ultimate Team', id: 'ug-hero' }, // Apunta al ID de tu sección Hero
   { label: 'Resumen Ejecutivo', id: 'ug-overview' },
   { label: 'Características Principales', id: 'ug-features' },
   { label: 'Recorrido de Usuario', id: 'ug-flows' },
@@ -17,29 +18,27 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 const UGNavigation: React.FC = () => {
-  const [activeId, setActiveId] = useState<string>('ug-overview');
+  const [activeId, setActiveId] = useState<string>('ug-hero');
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200;
-
+      const scrollMid = window.scrollY + window.innerHeight / 3;
       let activeItem = NAV_ITEMS[0].id;
 
       for (const item of NAV_ITEMS) {
         const section = document.getElementById(item.id);
         if (section) {
-          const sectionTop = section.offsetTop;
-          if (scrollPosition >= sectionTop) {
+          const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+          if (scrollMid >= sectionTop) {
             activeItem = item.id;
           }
         }
       }
-
       setActiveId(activeItem);
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Llamar una vez al montar
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -60,7 +59,6 @@ const UGNavigation: React.FC = () => {
                 activeId === item.id ? 'ug-navigation__link--active' : ''
               }`}
               onClick={() => handleNavClick(item.id)}
-              aria-current={activeId === item.id ? 'page' : undefined}
             >
               {item.label}
             </button>

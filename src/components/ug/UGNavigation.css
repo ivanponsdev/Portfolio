@@ -1,11 +1,12 @@
-/* Ultimate GYM Navigation Sidebar */
-
+/* Ultimate GYM Navigation - Estilo Técnico */
 .ug-navigation {
   position: fixed;
   left: 2rem;
   top: 50%;
   transform: translateY(-50%);
   z-index: 50;
+  padding-left: 20px;
+  border-left: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .ug-navigation__list {
@@ -24,48 +25,56 @@
 .ug-navigation__link {
   background: none;
   border: none;
-  padding: 0;
-  font-family: var(--font-family);
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
+  padding: 5px 0 5px 15px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.62);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: all 0.3s ease;
   text-align: left;
-  max-width: 150px;
-  word-wrap: break-word;
+  max-width: 160px;
   line-height: 1.4;
-  position: relative;
 }
 
 .ug-navigation__link:hover {
-  color: #ec4899;
+  color: #d4af37;
 }
 
+/* Estado Activo */
 .ug-navigation__link--active {
-  color: #ec4899;
-  font-weight: 500;
+  color: #d4af37;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
 }
 
-.ug-navigation__link--active::after {
+/* El marcador lateral para el activo */
+.ug-navigation__link--active::before {
   content: '';
   position: absolute;
-  bottom: -0.3rem;
-  left: 0;
-  width: 100%;
+  left: -21px; /* Ajustado para caer justo sobre el borde izquierdo del nav */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px;
   height: 2px;
-  background: #ec4899;
+  background: #d4af37;
+  box-shadow: 0 0 8px #d4af37;
+}
+
+/* Botón superior de volver al inicio de página */
+.ug-navigation__item:first-child {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.ug-navigation__item:first-child .ug-navigation__link {
+  color: #d4af37;
 }
 
 /* Responsive */
 @media (max-width: 1200px) {
-  .ug-navigation {
-    display: none;
-  }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .ug-navigation {
-    display: none;
-  }
+  .ug-navigation { display: none; }
 }

@@ -7,34 +7,13 @@ interface GalleryImage {
 }
 
 const GALLERY_IMAGES: GalleryImage[] = [
-  {
-    src: '/images/Estadisticas.jpg',
-    title: 'Estadísticas',
-  },
-  {
-    src: '/images/MisClases.jpg',
-    title: 'Mis Clases',
-  },
-  {
-    src: '/images/Calendario.jpg',
-    title: 'Calendario',
-  },
-  {
-    src: '/images/AsistenteVirtual.jpg',
-    title: 'Asistente Virtual',
-  },
-  {
-    src: '/images/EjerciciosTecnica.jpg',
-    title: 'Ejercicios & Técnica',
-  },
-  {
-    src: '/images/GestionUsuarios.jpg',
-    title: 'Gestión de Usuarios',
-  },
-  {
-    src: '/images/EliminarUsuario.jpg',
-    title: 'Eliminar Usuario',
-  },
+  { src: '/images/Estadisticas.jpg', title: 'Estadísticas' },
+  { src: '/images/MisClases.jpg', title: 'Mis Clases' },
+  { src: '/images/Calendario.jpg', title: 'Calendario' },
+  { src: '/images/AsistenteVirtual.jpg', title: 'Asistente Virtual' },
+  { src: '/images/EjerciciosTecnica.jpg', title: 'Ejercicios & Técnica' },
+  { src: '/images/GestionUsuarios.jpg', title: 'Gestión de Usuarios' },
+  { src: '/images/EliminarUsuario.jpg', title: 'Eliminar Usuario' },
 ];
 
 const UGGallery: React.FC = () => {
@@ -57,34 +36,42 @@ const UGGallery: React.FC = () => {
   };
 
   return (
-    <section className="ug-gallery">
+    <section className="ug-gallery" id="ug-gallery">
       <div className="container">
         <div className="ug-gallery__wrapper">
-          {/* Main image */}
+          
+          {/* Main Monitor Container */}
           <div className="ug-gallery__main">
+            {/* Counter integrado estilo display digital */}
+            <div className="ug-gallery__counter">
+              FRAME: {currentIndex + 1} // {GALLERY_IMAGES.length}
+            </div>
+
             <img
+              key={currentIndex} 
               src={GALLERY_IMAGES[currentIndex].src}
               alt={GALLERY_IMAGES[currentIndex].title}
               className="ug-gallery__image"
             />
+            
+            <div className="ug-gallery__scanline"></div>
+            
             <p className="ug-gallery__caption">
-              {GALLERY_IMAGES[currentIndex].title}
+              {'>'} {GALLERY_IMAGES[currentIndex].title}
             </p>
           </div>
 
-          {/* Controls */}
+          {/* Navigation Controls */}
           <div className="ug-gallery__controls">
-            {/* Previous button */}
             <button
               type="button"
-              className="ug-gallery__btn ug-gallery__btn--prev"
+              className="ug-gallery__btn"
               onClick={previous}
-              aria-label="Imagen anterior"
+              aria-label="Anterior"
             >
               ‹
             </button>
 
-            {/* Dots */}
             <div className="ug-gallery__dots">
               {GALLERY_IMAGES.map((_, index) => (
                 <button
@@ -94,26 +81,19 @@ const UGGallery: React.FC = () => {
                     index === currentIndex ? 'ug-gallery__dot--active' : ''
                   }`}
                   onClick={() => goTo(index)}
-                  aria-label={`Ir a imagen ${index + 1}`}
                   aria-current={index === currentIndex ? 'true' : 'false'}
                 />
               ))}
             </div>
 
-            {/* Next button */}
             <button
               type="button"
-              className="ug-gallery__btn ug-gallery__btn--next"
+              className="ug-gallery__btn"
               onClick={next}
-              aria-label="Siguiente imagen"
+              aria-label="Siguiente"
             >
               ›
             </button>
-          </div>
-
-          {/* Counter */}
-          <div className="ug-gallery__counter">
-            {currentIndex + 1} / {GALLERY_IMAGES.length}
           </div>
         </div>
       </div>

@@ -1,141 +1,194 @@
-/* Ultimate GYM - Hero Section */
-
 .ug-hero {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   overflow: hidden;
-  background: linear-gradient(135deg, #0b1121 0%, #1a1a2e 50%, #16213e 100%);
+  background: #00050a;
+  color: #ffffff;
 }
 
-/* Gradient overlay */
+/* RADAR BACKGROUND */
+.radar-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(circle at center, #151e2e 0%, #000205 100%);
+  opacity: 0.8;
+}
+
+.radar-background::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 150vw; height: 150vw;
+  transform: translate(-50%, -50%);
+  background-image: radial-gradient(
+    circle,
+    transparent 0%,
+    transparent 45%,
+    rgba(0, 157, 255, 0.1) 45.5%, 
+    transparent 46%
+  );
+  background-size: 280px 280px;
+}
+
+.radar-sweep {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 100vw; height: 100vw;
+  background: conic-gradient(from 0deg, transparent 0%, rgba(0, 157, 255, 0.1) 10%, transparent 20%);
+  transform-origin: center;
+  animation: sweep 10s linear infinite;
+}
+
+.radar-point {
+  position: absolute;
+  width: 5px; height: 5px;
+  background: #00d4ff; 
+  border-radius: 50%;
+  box-shadow: 0 0 15px #009dff, 0 0 5px #fff;
+  animation: radar-blink 4s infinite ease-in-out;
+  opacity: 0;
+}
+
+@keyframes sweep {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes radar-blink {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* GRADIENT OVERLAY (Tu estilo original mejorado) */
 .ug-hero__overlay {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(236, 72, 153, 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 50%);
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(0, 157, 255, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
   pointer-events: none;
+  z-index: 1;
 }
 
-/* Content layout */
+/* CONTENT LAYOUT */
 .ug-hero__content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: 4rem;
   align-items: center;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
-/* Text side */
 .ug-hero__title {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 900;
   letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #ffffff 30%, #ec4899 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.ug-hero__mission-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: #d4af37;
+  margin-bottom: 1.5rem;
+  letter-spacing: 2px;
 }
 
 .ug-hero__tagline {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  color: var(--color-text-muted);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1.7;
   max-width: 540px;
-  margin-bottom: 1.5rem;
-}
-
-/* Badges */
-.ug-hero__badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
   margin-bottom: 2rem;
 }
 
-.ug-hero__badge {
-  padding: 0.35rem 0.85rem;
-  background: rgba(236, 72, 153, 0.12);
-  border: 1px solid rgba(236, 72, 153, 0.3);
-  border-radius: var(--radius-full);
-  color: #ec4899;
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+/* BADGES (Técnicos) */
+.ug-hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
 }
 
-/* CTAs */
+.ug-hero__badge {
+  padding: 0.4rem 1rem;
+  background: rgba(212, 175, 55, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #d4af37;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* CTAS */
 .ug-hero__ctas {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 .ug-hero__cta {
-  padding: 0.75rem 1.6rem;
-  border-radius: var(--radius-full);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
+  padding: 0.8rem 2rem;
+  font-size: 0.8rem;
+  font-weight: 700;
   text-decoration: none;
-  transition: all var(--transition-base);
-  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .ug-hero__cta--primary {
-  background: var(--color-accent-pink);
-  color: #fff;
+  background: #d4af37;
+  color: #000;
 }
 
 .ug-hero__cta--primary:hover {
-  background: #db2777;
-  box-shadow: 0 0 24px rgba(236, 72, 153, 0.35);
+  background: #fff;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
 }
 
 .ug-hero__cta--secondary {
   background: transparent;
-  border: 1px solid var(--color-border-hover);
-  color: var(--color-text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
 }
 
 .ug-hero__cta--secondary:hover {
-  border-color: var(--color-accent-pink);
-  color: var(--color-accent-pink);
+  border-color: #d4af37;
+  color: #d4af37;
 }
 
-/* Visual side */
-.ug-hero__visual {
-  display: flex;
-  justify-content: center;
-}
-
-.ug-hero__image-frame {
+/* VISUAL SIDE - MONITOR */
+.ug-hero__monitor-frame {
   position: relative;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 60px rgba(236, 72, 153, 0.08);
-  max-width: 520px;
-  width: 100%;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 6px;
+  background: #000;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.8);
 }
 
-.ug-hero__image-frame::before {
-  content: '';
+.ug-hero__scanline {
   position: absolute;
-  inset: -1px;
-  border-radius: var(--radius-lg);
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(236, 72, 153, 0.3), rgba(59, 130, 246, 0.2));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to bottom, transparent 50%, rgba(212, 175, 55, 0.02) 50%);
+  background-size: 100% 4px;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -143,32 +196,17 @@
   width: 100%;
   height: auto;
   display: block;
+  filter: contrast(1.1) brightness(0.9);
 }
 
-/* Ultimate GYM - Hero Section */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .ug-hero__content {
     grid-template-columns: 1fr;
     text-align: center;
     padding-top: 6rem;
   }
-
-  .ug-hero__tagline {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .ug-hero__badges {
+  .ug-hero__mission-specs, .ug-hero__badges, .ug-hero__ctas {
     justify-content: center;
   }
-
-  .ug-hero__ctas {
-    justify-content: center;
-  }
-
-  .ug-hero__image-frame {
-    max-width: 400px;
-  }
+  .ug-hero__tagline { margin: 0 auto 2rem; }
 }
-
-

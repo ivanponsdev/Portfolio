@@ -246,11 +246,23 @@
     grid-template-columns: 1fr;
   }
   .projects__card-image-wrapper {
-    min-height: 250px;
+    min-height: unset;
+    height: 280px;
+    max-height: 280px;
     border-right: none;
     border-bottom: 1px solid rgba(212, 175, 55, 0.15);
   }
   .projects__card-info {
     padding: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects__card-image-wrapper {
+    height: 200px;
+    max-height: 200px;
+  }
+  .projects__card-info {
+    padding: 24px 20px;
   }
 }

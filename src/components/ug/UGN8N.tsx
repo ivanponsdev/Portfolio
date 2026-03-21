@@ -1,103 +1,99 @@
+import React from 'react';
 import './UGN8N.css';
 
 interface Workflow {
-  id: number;
+  id: string;
   title: string;
   trigger: string;
   steps: string[];
   before: string;
   after: string;
   benefit: string;
+  color: string;
 }
 
 const WORKFLOWS: Workflow[] = [
   {
-    id: 1,
+    id: 'WF-01',
     title: 'Export Automático de Datos',
-    trigger: 'Cron Schedule (semanal, mismo día/hora)',
+    trigger: 'Cron Schedule — semanal, misma hora',
     steps: [
-      'Timer Schedule ejecuta workflow automáticamente',
-      'n8n recopila datos de MongoDB',
-      'Genera archivo Excel con tablas formateadas',
+      'Timer Schedule ejecuta el workflow automáticamente',
+      'n8n recopila los datos de MongoDB',
+      'Genera y distribuye un Excel formateado',
     ],
-    before: '10 minutos (manual)',
-    after: '30 segundos (automático)',
-    benefit: 'Ahorro de ~95% del tiempo',
+    before: '10 min (manual)',
+    after: '30 seg (automático)',
+    benefit: 'Ahorro del 95% del tiempo operativo',
+    color: '#dfa85e',
   },
   {
-    id: 2,
-    title: 'Envío de Guías de Entrenamiento, Alimentación y Hábitos',
-    trigger: 'Click en botón "Enviar guía" (admin panel)',
+    id: 'WF-02',
+    title: 'Envío de Guías de Entrenamiento',
+    trigger: 'Evento — clic en "Enviar guía" (admin panel)',
     steps: [
-      'User hace clic en botón de enviar guías',
-      'El sistema envía automáticamente el PDF correspondiente al objetivo del usuario',
-      'El admin solo sube cada PDF una vez desde su dashboard; los usuarios reciben el PDF adecuado sin intervención manual',
+      'Admin activa el envío desde su panel de control',
+      'El sistema selecciona el PDF según el objetivo del usuario',
+      'Email automatizado con la guía correcta sin intervención manual',
     ],
-    before: '5 minutos por guía (manual)',
+    before: '5 min/usuario (manual)',
     after: '0 intervención manual',
-    benefit: '100% automatizado',
+    benefit: '100% automatizado — sin fricción',
+    color: '#ae85ae',
   },
 ];
 
 const UGN8N: React.FC = () => {
   return (
     <section id="ug-n8n" className="ug-n8n">
-      <div className="container">
-        {/* Section header */}
-        <div className="ug-n8n__header">
-          <span className="ug-n8n__badge">✨ Lo diferenciador</span>
-          <h2 className="ug-n8n__title">
-            Automatizaciones con{' '}
-            <span className="ug-n8n__accent">n8n</span>
-          </h2>
-          <p className="ug-n8n__intro">
-            Elimina tareas manuales repetitivas mediante workflows inteligentes.
-            Mientras otros proyectos muestran CRUD, este integra automatizaciones
-            reales que aportan valor de negocio.
+      <div className="ug-n8n__container">
+        <header className="ug-n8n__header">
+          <div className="ug-n8n__badge">[ AUTOMATIZACIONES ]</div>
+          <h2 className="ug-n8n__title">PROTOCOLOS DE AUTOMATIZACIÓN</h2>
+          <p className="ug-n8n__subtitle">
+            Flujos operativos que eliminan trabajo manual repetitivo · Integración real n8n
           </p>
-        </div>
+        </header>
 
-        {/* Workflows */}
-        <div className="ug-n8n__workflows">
+        <div className="ug-n8n__grid">
           {WORKFLOWS.map((wf) => (
-            <article key={wf.id} className="ug-n8n__workflow">
-              <div className="ug-n8n__workflow-header">
-                <span className="ug-n8n__workflow-number">
-                  Workflow #{wf.id}
-                </span>
-                <h3 className="ug-n8n__workflow-title">{wf.title}</h3>
+            <article
+              key={wf.id}
+              className="ug-n8n__card"
+              style={{ '--wf-color': wf.color } as React.CSSProperties}
+            >
+              <div className="ug-n8n__card-head">
+                <span className="ug-n8n__card-id">{wf.id}</span>
+                <span className="ug-n8n__card-status" style={{ color: wf.color }}>ACTIVO</span>
               </div>
-
-              {/* Trigger */}
-              <div className="ug-n8n__trigger">
-                <span className="ug-n8n__trigger-label">Trigger:</span>
-                <span className="ug-n8n__trigger-text">{wf.trigger}</span>
+              <h3 className="ug-n8n__card-title">{wf.title.toUpperCase()}</h3>
+              <div className="ug-n8n__trigger-row">
+                <span className="ug-n8n__trigger-label">TRIGGER:</span>
+                <span className="ug-n8n__trigger-value">{wf.trigger}</span>
               </div>
-
-              {/* Steps pipeline */}
               <div className="ug-n8n__steps">
                 {wf.steps.map((step, i) => (
                   <div key={i} className="ug-n8n__step">
-                    <div className="ug-n8n__step-number">{i + 1}</div>
-                    <span className="ug-n8n__step-text">{step}</span>
+                    <div className="ug-n8n__step-dot" style={{ borderColor: wf.color }}>
+                      <span style={{ color: wf.color }}>{String(i + 1).padStart(2, '0')}</span>
+                    </div>
+                    {i < wf.steps.length - 1 && <div className="ug-n8n__step-line" />}
+                    <p className="ug-n8n__step-text">{step}</p>
                   </div>
                 ))}
               </div>
-
-              {/* Before / After comparison */}
               <div className="ug-n8n__comparison">
-                <div className="ug-n8n__comparison-item ug-n8n__comparison-item--before">
-                  <span className="ug-n8n__comparison-label">⏱️ Antes</span>
-                  <span className="ug-n8n__comparison-value">{wf.before}</span>
+                <div className="ug-n8n__comparison-before">
+                  <span className="ug-n8n__comp-label">ESTADO ANTERIOR</span>
+                  <span className="ug-n8n__comp-value ug-n8n__comp-value--before">{wf.before}</span>
                 </div>
                 <div className="ug-n8n__comparison-arrow">→</div>
-                <div className="ug-n8n__comparison-item ug-n8n__comparison-item--after">
-                  <span className="ug-n8n__comparison-label">⚡ Ahora</span>
-                  <span className="ug-n8n__comparison-value">{wf.after}</span>
+                <div className="ug-n8n__comparison-after">
+                  <span className="ug-n8n__comp-label">ESTADO ACTUAL</span>
+                  <span className="ug-n8n__comp-value" style={{ color: wf.color }}>{wf.after}</span>
                 </div>
               </div>
-
-              <p className="ug-n8n__benefit">{wf.benefit}</p>
+              <p className="ug-n8n__benefit" style={{ color: wf.color }}>» {wf.benefit}</p>
             </article>
           ))}
         </div>

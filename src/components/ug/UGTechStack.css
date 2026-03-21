@@ -1,169 +1,215 @@
-/* Ultimate GYM - Tech Stack Section */
-
+/* ── STACK TECNOLÓGICO ─────────────────────────── */
 .ug-tech {
-  padding: 6rem 0;
-  background: linear-gradient(180deg, #0e1528 0%, var(--color-bg) 100%);
-}
-
-.ug-tech__title {
-  text-align: center;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  margin-bottom: 3rem;
-}
-
-.ug-tech__accent {
-  color: var(--color-accent-pink);
-}
-
-/* 4-column grid */
-.ug-tech__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  margin-bottom: 4rem;
-}
-
-/* Layer card */
-.ug-tech__layer {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem 1.25rem;
-  transition: all var(--transition-base);
-}
-
-.ug-tech__layer:hover {
-  border-color: rgba(255, 255, 255, 0.12);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
-}
-
-.ug-tech__layer-header {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.75rem;
-}
-
-.ug-tech__layer-icon {
-  font-size: 1.5rem;
+  position: relative;
+  padding: 100px 2rem;
+  background-color: #050505;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
 }
 
-.ug-tech__layer-title {
-  font-size: var(--font-size-base);
-  font-weight: 700;
+.ug-tech__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-.ug-tech__layer-line {
-  height: 2px;
-  border-radius: 1px;
-  opacity: 0.4;
-  margin-bottom: 1rem;
+/* Header */
+.ug-tech__header {
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
-/* Tech items */
-.ug-tech__list {
+.ug-tech__title {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  letter-spacing: 4px;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.ug-tech__subtitle {
+  color: #aaaaaa;
+  font-size: 0.85rem;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* Grid */
+.ug-tech__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+  margin-bottom: 3rem;
+}
+
+/* Cards */
+.ug-tech__card {
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-left: 3px solid var(--layer-color);
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.ug-tech__card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.ug-tech__card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.ug-tech__card-id {
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 1px;
+}
+
+.ug-tech__card-icon {
+  display: flex;
+  opacity: 0.8;
+}
+
+.ug-tech__card-title {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-bottom: 1.2rem;
+}
+
+/* List */
+.ug-tech__list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
 }
 
 .ug-tech__item {
   display: flex;
-  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  font-size: 0.82rem;
+  line-height: 1.4;
 }
 
-.ug-tech__item-name {
-  font-size: var(--font-size-sm);
-  color: var(--color-text);
-  font-weight: 600;
-}
-
-.ug-tech__item-desc {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-dim);
-}
-
-/* Architecture diagram */
-.ug-tech__arch {
-  display: flex;
-  justify-content: center;
-}
-
-.ug-tech__arch-diagram {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 2rem;
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  max-width: 800px;
-  width: 100%;
-}
-
-.ug-tech__arch-node {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 1rem 1.25rem;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.02);
-  min-width: 110px;
-  text-align: center;
-}
-
-.ug-tech__arch-node span {
-  font-size: 1.5rem;
-}
-
-.ug-tech__arch-node strong {
-  font-size: var(--font-size-sm);
-  color: var(--color-text);
-}
-
-.ug-tech__arch-node small {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-dim);
-}
-
-.ug-tech__arch-node--client { border-color: rgba(236, 72, 153, 0.3); }
-.ug-tech__arch-node--server { border-color: rgba(59, 130, 246, 0.3); }
-.ug-tech__arch-node--db     { border-color: rgba(52, 211, 153, 0.3); }
-.ug-tech__arch-node--n8n    { border-color: rgba(167, 139, 250, 0.3); }
-
-.ug-tech__arch-arrow {
-  font-size: 1.25rem;
-  color: var(--color-text-dim);
+.ug-tech__bullet {
+  color: var(--layer-color);
+  font-family: 'Courier New', monospace;
   flex-shrink: 0;
 }
 
-/* Ultimate GYM - Tech Stack Section */
-@media (max-width: 1024px) {
+.ug-tech__item-name {
+  color: #f0f0f0;
+  font-weight: 600;
+}
+
+.ug-tech__item-sep {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.ug-tech__item-desc {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Architecture Diagram */
+.ug-tech__arch {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.ug-tech__arch-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.ug-tech__arch-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ug-tech__arch-node {
+  border: 1px solid var(--node-color);
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 110px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ug-tech__arch-node-id {
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  color: var(--node-color);
+  letter-spacing: 1px;
+  opacity: 0.88;
+}
+
+.ug-tech__arch-node-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.ug-tech__arch-node-sub {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Courier New', monospace;
+}
+
+.ug-tech__arch-connector {
+  font-family: 'Courier New', monospace;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 1.2rem;
+  padding: 0 0.3rem;
+  user-select: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
   .ug-tech__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .ug-tech__grid {
     grid-template-columns: 1fr;
   }
-
-  .ug-tech__arch-diagram {
+  .ug-tech__arch-row {
     flex-direction: column;
   }
-
-  .ug-tech__arch-arrow {
+  .ug-tech__arch-connector {
     transform: rotate(90deg);
+    padding: 0.2rem 0;
   }
 }
 
-
+.ug-tech__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}

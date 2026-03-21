@@ -1,0 +1,48 @@
+/* Hidden on desktop */
+.scroll-arrow {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .scroll-arrow {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 52px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.82);
+    border-top: 1px solid rgba(212, 175, 55, 0.25);
+    z-index: 200;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .scroll-arrow__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.6rem 2rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .scroll-arrow__icon {
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-right: 2px solid #d4af37;
+    border-bottom: 2px solid #d4af37;
+    transform: rotate(45deg) translateY(-4px);
+    animation: arrow-pulse 1.8s ease-in-out infinite;
+  }
+
+  @keyframes arrow-pulse {
+    0%, 100% { transform: rotate(45deg) translateY(-4px);  opacity: 1; }
+    50%       { transform: rotate(45deg) translateY(2px);   opacity: 0.5; }
+  }
+}

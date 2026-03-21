@@ -1,82 +1,117 @@
-/* Ultimate GYM - Overview Section */
-
+/* --- Estructura y Protección contra solapamiento --- */
 .ug-overview {
-  padding: 6rem 0;
-  background: var(--color-bg);
   position: relative;
-}
-
-.ug-overview__title {
-  text-align: center;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  margin-bottom: 3rem;
-}
-
-.ug-overview__accent {
-  color: var(--color-accent-pink);
-}
-
-/* 3-column grid */
-.ug-overview__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-
-.ug-overview__card {
-  background: var(--color-bg-card);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: 2rem 1.5rem;
-  text-align: center;
-  transition: all var(--transition-base);
-}
-
-/* Colores únicos por tarjeta */
-.ug-overview__card--0 {
-  border-color: #ec4899;
-}
-.ug-overview__card--1 {
-  border-color: #f59e42;
-}
-.ug-overview__card--2 {
-  border-color: #3b82f6;
-}
-
-.ug-overview__card:hover {
-  border-color: rgba(236, 72, 153, 0.25);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-}
-
-.ug-overview__icon {
-  font-size: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
+  min-height: 90vh; 
+  padding: 100px 2rem;
+  background-color: #050505; /* Negro profundo para que todo lo demás resalte */
+  z-index: 10;
+}
+
+.ug-overview__container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* --- Títulos (Estilo Informe Técnico) --- */
+.ug-overview__header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.ug-overview__title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  color: #ffffff; /* Blanco puro para máxima claridad */
+  font-family: 'Courier New', monospace;
+  letter-spacing: 4px;
+}
+
+.ug-overview__accent {
+  /* Usamos tu rosa pero sólido, sin efectos de brillo raros */
+  color: var(--color-accent-pink); 
+}
+
+.ug-overview__subtitle {
+  color: #bbbbbb; /* Un gris muy claro, casi blanco */
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+/* --- Grid y Tarjetas de Alto Contraste --- */
+.ug-overview__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.ug-overview__card {
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+.ug-overview__card-inner {
+  position: relative;
+  height: 100%;
+  padding: 3.5rem 2rem;
+  background: rgba(255, 255, 255, 0.055);
+  border-top: 3px solid var(--accent-color); 
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  border-right: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  backdrop-filter: blur(5px);
+}
+
+.ug-overview__card:hover {
+  transform: translateY(-10px);
+  /* Un fondo sutilmente más claro al pasar el ratón para dar feedback */
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* --- Detalles Internos (Claridad Máxima) --- */
+.ug-overview__step {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  color: #ffffff; 
+  opacity: 0.2; /* Lo dejamos como un detalle de fondo */
+}
+
+.ug-overview__icon {
+  margin-bottom: 1.5rem;
+  display: flex;
+  color: var(--accent-color); /* Color de la tarjeta (el desaturado que elegimos) */
 }
 
 .ug-overview__card-title {
-  font-size: var(--font-size-xl);
-  color: var(--color-text);
-  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+  color: #ffffff; /* Título blanco puro */
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .ug-overview__card-text {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  font-size: 1rem;
   line-height: 1.7;
-  text-align: justify;
+  color: #f5f5f5; /* Blanco humo: muy legible y limpio */
+  text-align: left;
 }
 
-/* Ultimate GYM - Overview Section */
-@media (max-width: 768px) {
+/* --- Mobile --- */
+@media (max-width: 1024px) {
   .ug-overview__grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    max-width: 450px;
+    margin: 0 auto;
   }
 }
-
-
