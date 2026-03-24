@@ -7,14 +7,14 @@ const OVERVIEW_CARDS = [
     step: 'I',
     icon: <TargetIcon size={32} />,
     title: 'EL PROBLEMA',
-    text: 'Los gimnasios pequeños y medianos gestionan usuarios, clases y ejercicios de forma manual, con hojas de cálculo y procesos repetitivos que consumen tiempo y generan errores.',
+    text: 'Usuarios con poco tiempo y que necesitan gestionar sus inscripciones y accerder a cierta información de manera rápida e intuitiva, además de necesitar motivación y sensación de acompañamiento.',
     color: '#d4829a' 
   },
   {
     step: 'II',
     icon: <LightbulbIcon size={32} />,
     title: 'LA SOLUCIÓN',
-    text: 'Ultimate GYM centraliza toda la gestión en una plataforma web SPA: usuarios, clases, ejercicios, estadísticas y automatizaciones desde una interfaz moderna.',
+    text: 'Ultimate GYM centraliza toda la gestión en una plataforma web SPA: usuarios, clases, ejercicios, estadísticas y automatizaciones desde una interfaz moderna, además tiene elementos que generan esa sensación de acompañamiento y motivación constante al usuario.',
     color: '#dfa85e' 
   },
   {
@@ -32,9 +32,9 @@ const UGOverview: React.FC = () => {
       <div className="ug-overview__container">
         <header className="ug-overview__header">
           <h2 className="ug-overview__title">
-            INFORME DE MISIÓN
+            Misión
           </h2>
-          <p className="ug-overview__subtitle">Crónica de una transformación digital</p>
+          <p className="ug-overview__subtitle">Transformación digital del negocio</p>
         </header>
 
         <div className="ug-overview__grid">

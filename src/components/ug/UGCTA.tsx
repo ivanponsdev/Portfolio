@@ -10,6 +10,8 @@ const UGCTA: React.FC = () => {
           <h2 className="ug-cta__title">¿TE INTERESA EL PROYECTO?</h2>
           <p className="ug-cta__subtitle">
             Explora la demo en vivo o contacta conmigo para conocer más sobre el desarrollo de Ultimate GYM.
+            <br /><br />
+            Puedes registrarte y acceder con tu cuenta a las funciones de la app o probar el modo demo sin necesidad de crear cuenta.
           </p>
         </header>
 

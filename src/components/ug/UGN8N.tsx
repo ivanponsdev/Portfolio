@@ -32,8 +32,8 @@ const WORKFLOWS: Workflow[] = [
     title: 'Envío de Guías de Entrenamiento',
     trigger: 'Evento — clic en "Enviar guía" (admin panel)',
     steps: [
-      'Admin activa el envío desde su panel de control',
-      'El sistema selecciona el PDF según el objetivo del usuario',
+      'Usuario hace clic en enviar guías',
+      'El sistema  envía por correo eléctronico las guías que le correspondan por objetivo al usuario de forma automática',
       'Email automatizado con la guía correcta sin intervención manual',
     ],
     before: '5 min/usuario (manual)',
